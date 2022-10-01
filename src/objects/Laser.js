@@ -14,7 +14,6 @@ class Laser extends Phaser.GameObjects.Image {
   }
 
   fire(shooter, target) {
-    console.log(target);
     this.setPosition(shooter.x, shooter.y); // init position
     this.direction = Math.atan((target.x - this.x) / (target.y - this.y));
 
