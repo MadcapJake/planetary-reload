@@ -18,7 +18,7 @@ class FollowScene extends Phaser.Scene {
     this.background   = this.add.image(CONFIG.DEFAULT_WIDTH, CONFIG.DEFAULT_HEIGHT, 'background');
     this.player       = this.physics.add.sprite(CONFIG.DEFAULT_WIDTH, CONFIG.DEFAULT_HEIGHT, 'player');
     this.enemy        = this.physics.add.sprite(300, 600, 'enemy');
-    this.reticle      = this.physics.add.sprite(10, 10, 'target');  
+    this.reticle      = this.physics.add.sprite(10, 10, 'target');
 
     this.background.setOrigin(0.5, 0.5).setDisplaySize(1600, 1200);
     this.player.setOrigin(0.5, 0.5).setDisplaySize(132, 120).setCollideWorldBounds(true).setDrag(500, 500);
@@ -84,9 +84,9 @@ class FollowScene extends Phaser.Scene {
           keyD = this.input.keyboard.addKey('D');
 
     // Enables movement of player with WASD keys
-    keyW.on('down', () => this.player.setAccelerationY( 800));
+    keyW.on('down', () => this.player.setAccelerationY(-800));
     keyA.on('down', () => this.player.setAccelerationX(-800));
-    keyS.on('down', () => this.player.setAccelerationY(-800));
+    keyS.on('down', () => this.player.setAccelerationY( 800));
     keyD.on('down', () => this.player.setAccelerationX( 800));
 
     // Stops player acceleration on up-press of WASD keys
