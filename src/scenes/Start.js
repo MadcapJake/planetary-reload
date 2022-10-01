@@ -15,10 +15,12 @@ class StartScene extends Phaser.Scene {
     // Load the image assets needed for THIS scene
     this.load.image('StartScreen', 'assets/StartScreen.png')
 
-    // Load the image assets needed for 'ExampleScene'
-    this.load.image('sky', 'assets/skies/space3.png')
-    this.load.image('logo', 'assets/sprites/phaser3-logo.png')
-    this.load.image('red', 'assets/particles/red.png')
+    // Load the image assets needed for 'FollowScene'
+    this.load.spritesheet('player', 'assets/sprites/player.png', { frameWidth: 66, frameHeight: 60 });
+    this.load.spritesheet('enemy',  'assets/sprites/enemy.png',  { frameWidth: 66, frameHeight: 60 });
+    this.load.image('laser',        'assets/sprites/laser_bolt.png');
+    this.load.image('target',       'assets/sprites/target.png');
+    this.load.image('background',   'assets/backgrounds/dirt1.png');
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -29,9 +31,9 @@ class StartScene extends Phaser.Scene {
     ])
 
     // DEBUG: Fake loading lots of data
-    for (let i = 0; i < 300; i++) {
-      this.load.image('sky' + i, 'assets/skies/space3.png')
-    }
+    // for (let i = 0; i < 300; i++) {
+    //   this.load.image('sky' + i, 'assets/skies/space3.png')
+    // }
   }
 
   create () {
@@ -55,7 +57,7 @@ class StartScene extends Phaser.Scene {
 
   keyReleased () {
     console.log('Key released')
-    this.scene.start('ExampleScene')
+    this.scene.start('FollowScene')
     this.music.stop()
   }
 }

@@ -3,9 +3,8 @@ import Phaser from 'phaser'
 
 import CONFIG from './config.js'
 
-// Bringing in our base example scene
-import ExampleScene from './scenes/Example.js'
 import StartScene from './scenes/Start.js'
+import FollowScene from './scenes/Follow.js'
 import HUDScene from './scenes/HUD.js'
 
 const config = {
@@ -26,7 +25,8 @@ const config = {
       gravity: { y: CONFIG.DEFAULT_GRAVITY },
       debug: __DEV__
     }
-  }
+  },
+
 }
 
 // Initialize the base phaser game object (must always be done once)
@@ -34,6 +34,6 @@ const game = new Phaser.Game(config)
 
 // Add and auto-starting ExampleScene
 game.scene.add('StartScene', StartScene)
-game.scene.add('ExampleScene', ExampleScene)
+game.scene.add('FollowScene', FollowScene)
 game.scene.add('HUDScene', HUDScene)
 game.scene.start('StartScene')
