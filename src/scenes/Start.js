@@ -13,14 +13,18 @@ class StartScene extends Phaser.Scene {
 
   preload () {
     // Load the image assets needed for THIS scene
-    this.load.image('StartScreen', 'assets/StartScreen.png')
+    this.load.image('StartScreen',   'assets/StartScreen.png')
 
-    // Load the image assets needed for 'FollowScene'
-    this.load.spritesheet('player', 'assets/sprites/player.png', { frameWidth: 66, frameHeight: 60 });
-    this.load.spritesheet('enemy',  'assets/sprites/enemy.png',  { frameWidth: 66, frameHeight: 60 });
-    this.load.image('laser',        'assets/sprites/laser_bolt.png');
-    this.load.image('target',       'assets/sprites/target.png');
-    this.load.image('background',   'assets/backgrounds/dirt1.png');
+    // Load the image assets needed for 'WorldScene'
+    this.load.spritesheet('soldier', 'assets/sprites/player.png', { frameWidth: 66, frameHeight: 60 });
+    this.load.image('target',        'assets/sprites/target.png');
+    
+    this.load.image('heart',         'assets/sprites/heart.png');    
+    this.load.image('laser',         'assets/sprites/laser_bolt.png');
+
+    this.load.image('grass',         'assets/backgrounds/grass1.png');
+    this.load.image('factions',      'assets/backgrounds/factions.png');
+    
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -57,7 +61,7 @@ class StartScene extends Phaser.Scene {
 
   keyReleased () {
     console.log('Key released')
-    this.scene.start('FollowScene')
+    this.scene.start('WorldScene')
     this.music.stop()
   }
 }
