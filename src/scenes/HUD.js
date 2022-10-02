@@ -10,9 +10,9 @@ class HUDScene extends Phaser.Scene {
     this.loadingText = this.add.text(100, 10, 'INFORMATION', loadTextOptions);
     this.loadingText.setOrigin(1, 1).setScrollFactor(0)
 
-    this.hp1 = this.add.image(w-50, h, 'heart').setScrollFactor(0);
-    this.hp2 = this.add.image(w-100, h, 'heart').setScrollFactor(0);
-    this.hp3 = this.add.image(w-150, h, 'heart').setScrollFactor(0);
+    this.hp1 = this.add.image(w-50, h, 'heart.png').setScrollFactor(0);
+    this.hp2 = this.add.image(w-100, h, 'heart.png').setScrollFactor(0);
+    this.hp3 = this.add.image(w-150, h, 'heart.png').setScrollFactor(0);
 
     this.hp1.setOrigin(1, 1).setDisplaySize(50, 50);
     this.hp2.setOrigin(1, 1).setDisplaySize(50, 50);

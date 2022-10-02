@@ -28,15 +28,11 @@ class WorldScene extends Phaser.Scene {
     this.map = this.add.tilemap('main.json');
     
     this.map.addTilesetImage('map_tiles', 'main.png');
-    const ground    = this.map.createLayer(0, 'map_tiles').setActive(true).setVisible(true);
-    const obstacles = this.map.createLayer(1, 'map_tiles').setActive(true).setVisible(true);
-    const trees     = this.map.createLayer(2, 'map_tiles').setActive(true).setVisible(true);
-    const foliage   = this.map.createLayer(3, 'map_tiles').setActive(true).setVisible(true);
-
-    this.map.addTilesetImage('factions.png');
-    const territory = this.map.createBlankLayer('Territory', 'factions.png');
-    territory.randomize(undefined, undefined, undefined, undefined, [1,2,3]).setVisible(true);
-    console.log(this.map)
+    const ground    = this.map.createLayer(0, 'map_tiles').setVisible(true);
+    const obstacles = this.map.createLayer(1, 'map_tiles').setVisible(true);
+    const trees     = this.map.createLayer(2, 'map_tiles').setVisible(true);
+    const foliage   = this.map.createLayer(3, 'map_tiles').setVisible(true);
+    const territory = this.map.createLayer(4, 'map_tiles').setVisible(true);
 
     this.reticle
       .setOrigin(0.5, 0.5)
