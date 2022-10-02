@@ -38,6 +38,7 @@ class HUDScene extends Phaser.Scene {
   update () {}
 
   loseHealth (remainingHealth) {
+    console.log(`Remaining health: ${remainingHealth}`);
     switch(remainingHealth) {
       case  2: this.hp3.destroy(); break;
       case  1: this.hp2.destroy(); break;

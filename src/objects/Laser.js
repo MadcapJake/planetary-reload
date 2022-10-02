@@ -33,14 +33,12 @@ class Laser extends Phaser.GameObjects.Image {
     this.rotation = shooter.rotation; // angle laser with shooters rotation
     
     this.born = 0; // time since new laser spawned
-
-    this.scene.physics.add.collider(this.scene.soldiers, this, enemyHitCallback);
+    
+    this.scene.physics.add.collider(this.scene.soldiers, this, enemyHitCallback.bind(this.scene));
   }
 
   update(time, delta) {
-    this.x += this.xSpeed * delta;
-    this.y += this.ySpeed * delta;
-    this.born += delta;
+    this.x += this.xSpeed * delta; this.y += this.ySpeed * delta; this.born += delta;
     if (this.born > 1800) { this.setActive(false); this.setVisible(false) }
   }
 }
@@ -49,10 +47,9 @@ function enemyHitCallback(laserHit, enemyHit) {
   // reduce health of enemy
   if (laserHit.active === true && enemyHit.active === true) {
     enemyHit.health = enemyHit.health - 1;
-    console.log("Enemy hp: ", enemyHit.health);
 
     // kill enemy if health <= 0
-    if (enemyHit.activePlayer) this.scene.get('HUDScene').loseHealth(enemyHit.health);
+    if (enemyHit.isPlayer) this.scene.get('HUDScene').loseHealth(enemyHit.health);
     if (enemyHit.health <= 0) enemyHit.setActive(false).setVisible(false);
 
     // destroy bullet
