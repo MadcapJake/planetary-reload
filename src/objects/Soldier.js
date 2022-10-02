@@ -3,17 +3,12 @@ import Phaser from 'phaser'
 import CONFIG from '../config.js'
 
 class Soldier extends Phaser.GameObjects.Sprite {
-  constructor(scene) {
-    super(scene, 0, 0, 'soldier');
+  constructor(scene, kind) {
+    super(scene, 0, 0, `soldier-${kind}.png`);
 
     this.isPlayer = false;
     
-    // TODO: pick team
-    this.team = 'purple';
-
-    // TODO: place in the world
-    this.x = 0;
-    this.y = 0;
+    this.team = kind;
 
     this.health = 3;
 
@@ -26,7 +21,7 @@ class Soldier extends Phaser.GameObjects.Sprite {
   }
 
   update(time, delta) {
-    if (this.isPlayer) constrainVelocity(this, 200);
+    if (this.isPlayer) constrainVelocity(this, 400);
 
     // TODO: detectFire
     if (!this.isPlayer) enemyFire(this, this.scene.lasers, this.target, time);
@@ -121,4 +116,14 @@ function enemyFire(enemy, lasers, player, time) {
   }
 }
 
-export default Soldier;
+export class SoldierGold extends Soldier {
+  constructor(scene) { super(scene, 'gold') }
+}
+
+export class SoldierBlue extends Soldier {
+  constructor(scene) { super(scene, 'blue') }
+}
+
+export class SoldierPurple extends Soldier {
+  constructor(scene) { super(scene, 'purple') }
+}

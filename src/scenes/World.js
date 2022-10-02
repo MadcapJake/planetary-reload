@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 
 import CONFIG from '../config.js'
 
-import Soldier from '../objects/Soldier.js'
+import {SoldierBlue, SoldierGold, SoldierPurple} from '../objects/Soldier.js'
 import Laser from '../objects/Laser.js'
 
 class WorldScene extends Phaser.Scene {
@@ -14,40 +14,46 @@ class WorldScene extends Phaser.Scene {
   }
 
   create () {
-    this.reticle  = this.physics.add.sprite(10, 10, 'target');
-    this.soldiers = this.physics.add.group({ classType: Soldier, runChildUpdate: true });
-    this.lasers   = this.physics.add.group({ classType: Laser, runChildUpdate: true });
+    this.reticle = this.physics.add.sprite(0, 0, 'target.png');
 
-    const data    = new Array(100).fill(new Array(100).fill(0));
-    this.map      = this.make.tilemap({
-      data,
-      tileHeight: 750,
-      tileWidth: 750,
-      width: 100,
-      height: 100
-    });
-    this.map.addTilesetImage('grass');
-    this.map.addTilesetImage('factions');
-    const ground = this.map.createBlankLayer('ground', 'grass');
-    ground.fill(0).setVisible(true);
-    const territory = this.map.createBlankLayer('territory', 'factions');
-    territory.randomize(undefined, undefined, undefined, undefined, [1,2,3]).setVisible(true);
-    console.log(this.map);
-    const worldWidth  = CONFIG.DEFAULT_WIDTH * 10,
-          worldHeight = CONFIG.DEFAULT_HEIGHT * 10;
+    this.soldiersGold = this.physics.add.group({ classType: SoldierGold, runChildUpdate: true });
+    this.soldiersPurple = this.physics.add.group({ classType: SoldierPurple, runChildUpdate: true });
+    this.soldiersBlue = this.physics.add.group({ classType: SoldierBlue, runChildUpdate: true });
 
-    // this.background.setOrigin(0, 0).setDisplaySize(worldWidth, worldHeight);
-    this.reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25).setCollideWorldBounds(true);
+    this.lasers = this.physics.add.group({ classType: Laser,   runChildUpdate: true });
+
+    // const data = new Array(100)
+    //   .fill(new Array(100))
+    //   .map((row) => row.map((cell) => Math.floor(Math.random() * 2)));
+    this.map = this.add.tilemap('main.json');
     
-    this.player = this.soldiers.get().setActive(true).setVisible(true);
-    this.player.setPlayer().setOrigin(0.5, 0.5).setDisplaySize(132, 120);
+    this.map.addTilesetImage('map_tiles', 'main.png');
+    const ground    = this.map.createLayer(0, 'map_tiles').setActive(true).setVisible(true);
+    const obstacles = this.map.createLayer(1, 'map_tiles').setActive(true).setVisible(true);
+    const trees     = this.map.createLayer(2, 'map_tiles').setActive(true).setVisible(true);
+    const foliage   = this.map.createLayer(3, 'map_tiles').setActive(true).setVisible(true);
+
+    this.map.addTilesetImage('factions.png');
+    const territory = this.map.createBlankLayer('Territory', 'factions.png');
+    territory.randomize(undefined, undefined, undefined, undefined, [1,2,3]).setVisible(true);
+    console.log(this.map)
+
+    this.reticle
+      .setOrigin(0.5, 0.5)
+      .setDisplaySize(25, 25)
+      .setCollideWorldBounds(true);
+    
+    this.player = this.soldiersGold.get().setActive(true).setVisible(true);
+    this.player.setPlayer().setOrigin(0.5, 0.5).setDisplaySize(132, 120).setPosition(2000, 300);
     this.player.body.setCollideWorldBounds(true).setDrag(1500, 1500);
 
-    for (var soldierID of [1, 2, 3]) {
-      let soldier = this.soldiers.get().setActive(true).setVisible(true);
-      soldier.setOrigin(0.5 * soldierID, 0.5 * soldierID).setDisplaySize(132, 120)
-      soldier.body.setCollideWorldBounds(true);
-    }
+    this.soldiersPurple.createFromConfig({
+      key: 'soldier-purple.png',
+      repeat: 5,
+      setOrigin: {x: 0.5, y: 0.5},  
+      setXY: {x: 400, y: 400, stepX: 400, stepY: 400},
+      setScale: { x: 2, y: 2 }
+    });
 
 
     // Create and configure a particle emitter
@@ -73,6 +79,7 @@ class WorldScene extends Phaser.Scene {
     this.cameras.main.zoom = 0.5;
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    this.cameras.main.ignore(territory);
     // this.cameras.main.setDeadzone(worldWidth * 0.25, worldHeight)
 
     // Make the particle emitter follow the logo
@@ -114,12 +121,11 @@ class WorldScene extends Phaser.Scene {
   }
 
   update (time, delta) {
-    const { reticle } = this.scene.get('HUDScene');
 
-    reticle.body.velocity.x = this.player.body.velocity.x;
-    reticle.body.velocity.y = this.player.body.velocity.y;
+    this.reticle.body.velocity.x = this.player.body.velocity.x;
+    this.reticle.body.velocity.y = this.player.body.velocity.y;
 
-    constrainReticle(this.player, reticle);
+    constrainReticle(this.player, this.reticle);
 
   }
 

@@ -10,6 +10,12 @@
         "": {
             "scaleInDock": 1
         },
+        "#map_tiles": {
+            "dynamicWrapping": false
+        },
+        "C:/Users/madca/Documents/GitHub/planetary-reload/public/assets/tilemaps/main.tmj#map_tiles": {
+            "dynamicWrapping": false
+        },
         "ground_types.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 0.75,
@@ -19,8 +25,8 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1309.090909090909,
-                "y": 1030.30303030303
+                "x": 9351.515151515152,
+                "y": 9351.515151515152
             }
         },
         "olkoth.tmx#ground": {
@@ -29,22 +35,26 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/madca/Downloads/ground_tilesest",
-    "map.lastUsedFormat": "tmx",
-    "map.tileHeight": 128,
-    "map.tileWidth": 128,
+    "last.imagePath": "C:/Users/madca/Documents/GitHub/planetary-reload/public/assets/backgrounds",
+    "map.height": 25,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 750,
+    "map.tileWidth": 750,
+    "map.width": 25,
     "openFiles": [
         "olkoth.tmx",
         "ground_types.tsx"
     ],
     "project": "pr_tile_fatigue.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "ground_types.tsx",
         "olkoth.tmx"
     ],
+    "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 128,
-        "width": 128
+        "height": 750,
+        "width": 750
     }
 }

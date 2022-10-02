@@ -4,7 +4,7 @@ import CONFIG from '../config.js'
 
 class Laser extends Phaser.GameObjects.Image {
   constructor(scene) {
-    super(scene, 0, 0, 'laser');
+    super(scene, 0, 0, 'laser_bolt.png');
     this.speed = 1;
     this.born = 0;
     this.direction = 0;
@@ -33,8 +33,12 @@ class Laser extends Phaser.GameObjects.Image {
     this.rotation = shooter.rotation; // angle laser with shooters rotation
     
     this.born = 0; // time since new laser spawned
-    
-    this.scene.physics.add.collider(this.scene.soldiers, this, enemyHitCallback.bind(this.scene));
+
+    this.scene.physics.add.collider(
+      [this.scene.soldiersGold, this.scene.soldiersPurple, this.scene.soldiersBlue],
+      this,
+      enemyHitCallback.bind(this.scene)
+    );
   }
 
   update(time, delta) {

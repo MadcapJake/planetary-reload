@@ -16,14 +16,15 @@ class StartScene extends Phaser.Scene {
     this.load.image('StartScreen',   'assets/StartScreen.png')
 
     // Load the image assets needed for 'WorldScene'
-    this.load.spritesheet('soldier', 'assets/sprites/player.png', { frameWidth: 66, frameHeight: 60 });
-    this.load.image('target',        'assets/sprites/target.png');
-    
-    this.load.image('heart',         'assets/sprites/heart.png');    
-    this.load.image('laser',         'assets/sprites/laser_bolt.png');
-
-    this.load.image('grass',         'assets/backgrounds/grass1.png');
-    this.load.image('factions',      'assets/backgrounds/factions.png');
+    this.load.spritesheet('soldier-blue.png',   'assets/sprites/soldier_blue.png',   { frameWidth: 66, frameHeight: 60 });
+    this.load.spritesheet('soldier-gold.png',   'assets/sprites/soldier_gold.png',   { frameWidth: 66, frameHeight: 60 });
+    this.load.spritesheet('soldier-purple.png', 'assets/sprites/soldier_purple.png', { frameWidth: 66, frameHeight: 60 });
+    this.load.tilemapTiledJSON('main.json',     'assets/tilemaps/main.json');
+    this.load.image('main.png',       'assets/backgrounds/main.png');
+    this.load.image('target.png',     'assets/sprites/target.png');
+    this.load.image('heart.png',      'assets/sprites/heart.png');    
+    this.load.image('laser_bolt.png', 'assets/sprites/laser_bolt.png');
+    this.load.image('factions.png',   'assets/backgrounds/factions.png');
     
 
     // Pre-load the entire audio sprite

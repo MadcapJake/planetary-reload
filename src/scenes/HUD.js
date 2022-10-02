@@ -25,7 +25,7 @@ class HUDScene extends Phaser.Scene {
     this.tabmap = this.scene.get('WorldScene').cameras
       .add((w/2)-250, (h/2)-250, 500, 500)
       .setName('tab-map-camera')
-      .setZoom(0.01)
+      .setZoom(0.03)
       .setBackgroundColor(0x002244)
       .setVisible(false)
       .startFollow(this.player);
