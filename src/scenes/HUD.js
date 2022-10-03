@@ -25,10 +25,11 @@ class HUDScene extends Phaser.Scene {
     this.tabmap = this.scene.get('WorldScene').cameras
       .add((w/2)-250, (h/2)-250, 500, 500)
       .setName('tab-map-camera')
-      .setZoom(0.03)
+      .setZoom(0.05)
       .setBackgroundColor(0x002244)
       .setVisible(false)
       .startFollow(this.player);
+    // this.tabmap.roundPixels = true;
 
     // Open tab-map when tab is pressed
     const keyTab = this.input.keyboard.addKey('tab');

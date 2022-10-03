@@ -11,14 +11,13 @@ class WorldScene extends Phaser.Scene {
     this.reticle = this.matter.add.sprite(0, 0, 'target.png');
     this.reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25);
 
-    this.map = this.add.tilemap('main.json');
+    this.map = this.add.tilemap('main.tmj');
     const tileset   = this.map.addTilesetImage('map_tiles', 'main.png');
-    const ground    = this.map.createLayer(0, 'map_tiles'); // .setVisible(true);
-    const obstacles = this.map.createLayer(1, 'map_tiles');
-    const trees     = this.map.createLayer(2, 'map_tiles');
-    const foliage   = this.map.createLayer(3, 'map_tiles');
-    const territory = this.map.createLayer(4, 'map_tiles');
-    
+    const ground    = this.map.createLayer('Ground',    'map_tiles'); // .setVisible(true);
+    const obstacles = this.map.createLayer('Obstacles', 'map_tiles');
+    const trees     = this.map.createLayer('Trees',     'map_tiles');
+    const foliage   = this.map.createLayer('Foliage',   'map_tiles');
+    const territory = this.map.createLayer('Territory', 'map_tiles');
     this.map.setCollisionByProperty({colliding: true});
     this.matter.world.convertTilemapLayer(obstacles);
     this.matter.world.convertTilemapLayer(trees);
@@ -47,10 +46,12 @@ class WorldScene extends Phaser.Scene {
     this.matter.world.setBounds(this.map.widthInPixels, this.map.heightInPixels)
     this.matter.world.createDebugGraphic();
     this.matter.world.drawDebug = true;
+    this.matter.world.debugGraphic.setVisible(true);
 
     this.cameras.main.zoom = 0.5;
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    this.cameras.main.roundPixels = true;
     this.cameras.main.ignore(territory);
 
     // Fires laser from player on left click of mouse

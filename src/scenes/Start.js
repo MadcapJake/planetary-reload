@@ -19,12 +19,11 @@ class StartScene extends Phaser.Scene {
     this.load.spritesheet('soldier-blue.png',   'assets/sprites/soldier_blue.png',   { frameWidth: 66, frameHeight: 60 });
     this.load.spritesheet('soldier-gold.png',   'assets/sprites/soldier_gold.png',   { frameWidth: 66, frameHeight: 60 });
     this.load.spritesheet('soldier-purple.png', 'assets/sprites/soldier_purple.png', { frameWidth: 66, frameHeight: 60 });
-    this.load.tilemapTiledJSON('main.json',     'assets/tilemaps/main.json');
-    this.load.image('main.png',       'assets/backgrounds/main.png');
+    this.load.tilemapTiledJSON('main.tmj',     'assets/tilemaps/main.tmj');
+    this.load.image('main.png',       'assets/tilesets/main.png');
     this.load.image('target.png',     'assets/sprites/target.png');
     this.load.image('heart.png',      'assets/sprites/heart.png');    
     this.load.image('laser_bolt.png', 'assets/sprites/laser_bolt.png');
-    this.load.image('factions.png',   'assets/backgrounds/factions.png');
     
 
     // Pre-load the entire audio sprite
