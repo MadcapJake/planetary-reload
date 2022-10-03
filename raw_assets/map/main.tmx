@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="750" tileheight="750" infinite="0" nextlayerid="7" nextobjectid="1">
  <editorsettings>
-  <export target="main.tmj" format="json"/>
+  <export target="../../public/assets/tilemaps/main.tmj" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="map_tiles" tilewidth="750" tileheight="750" tilecount="30" columns="5">
   <image source="../../public/assets/tilesets/main.png" width="3750" height="4500"/>
   <tile id="2">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="3">
     <object id="26" class="SoldierBlocking" x="125.258" y="250.218" width="29.9375" height="250.395">
@@ -62,7 +62,7 @@
   </tile>
   <tile id="3">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="10" class="SoldierBlocking" x="625.243" y="500.776" width="29.9375" height="250.395" rotation="180">
@@ -117,7 +117,7 @@
   </tile>
   <tile id="4">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" class="SoldierColliding" x="94.6667" y="160">
@@ -152,7 +152,7 @@
   </tile>
   <tile id="5" probability="0.3">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" x="260.667" y="236" width="140.667" height="136">
@@ -166,7 +166,7 @@
   </tile>
   <tile id="8">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="19" class="SoldierBlocking" x="248.829" y="624.462" width="29.9375" height="250.395" rotation="-90">
@@ -221,7 +221,7 @@
   </tile>
   <tile id="9">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="5" class="SoldierColliding" x="49.3333" y="472">
@@ -256,7 +256,7 @@
   </tile>
   <tile id="10" probability="0.3">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" x="347" y="376.667" width="140.667" height="136">
@@ -270,7 +270,7 @@
   </tile>
   <tile id="13">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" class="SoldierBlocking" x="500.515" y="125.235" width="29.9375" height="250.395" rotation="90">
@@ -321,7 +321,7 @@
   </tile>
   <tile id="14">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" x="458" y="458.5">
@@ -349,7 +349,7 @@
   </tile>
   <tile id="15" probability="0.3">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" x="284.333" y="300.667" width="140.667" height="136">
@@ -363,7 +363,7 @@
   </tile>
   <tile id="18">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" class="SoldierColliding" x="415" y="225">
@@ -384,7 +384,7 @@
   </tile>
   <tile id="19">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" class="SoldierColliding" x="189" y="91.6667">
@@ -412,7 +412,7 @@
   </tile>
   <tile id="20" probability="0.3">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" x="347.666" y="236.667" width="140.667" height="136">
@@ -436,7 +436,7 @@
   </tile>
   <tile id="24">
    <properties>
-    <property name="colliding" type="bool" value="true"/>
+    <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
     <object id="1" class="SoldierColliding" x="181" y="224">

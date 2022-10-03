@@ -18,8 +18,10 @@ class WorldScene extends Phaser.Scene {
     const trees     = this.map.createLayer('Trees',     'map_tiles');
     const foliage   = this.map.createLayer('Foliage',   'map_tiles');
     const territory = this.map.createLayer('Territory', 'map_tiles');
-    this.map.setCollisionByProperty({colliding: true});
+
+    this.map.setCollisionByProperty({collides: true}, true, true, obstacles);
     this.matter.world.convertTilemapLayer(obstacles);
+    this.map.setCollisionByProperty({collides: true}, true, true, trees);
     this.matter.world.convertTilemapLayer(trees);
 
     console.log(this.map);
