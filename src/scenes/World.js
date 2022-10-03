@@ -8,21 +8,31 @@ import Laser from '../objects/Laser.js'
 class WorldScene extends Phaser.Scene {
   preload () {}
   create () {
-    this.reticle = this.matter.add.sprite(0, 0, 'target.png');
-    this.reticle.setOrigin(0.5, 0.5).setDisplaySize(25, 25);
+    this.reticle = this.matter.add.image(0, 0, 'target.png');
+    this.reticle.setOrigin(0.5, 0.5)
+      .setDisplaySize(25, 25)
+      .setCollisionGroup()
+      .setFixedRotation();
 
     this.map = this.add.tilemap('main.tmj');
     const tileset   = this.map.addTilesetImage('map_tiles', 'main.png');
-    const ground    = this.map.createLayer('Ground',    'map_tiles'); // .setVisible(true);
+    const ground    = this.map.createLayer('Ground',    'map_tiles'); 
     const obstacles = this.map.createLayer('Obstacles', 'map_tiles');
     const trees     = this.map.createLayer('Trees',     'map_tiles');
-    const foliage   = this.map.createLayer('Foliage',   'map_tiles');
+    const canopy    = this.map.createLayer('Canopy',    'map_tiles');
     const territory = this.map.createLayer('Territory', 'map_tiles');
 
     this.map.setCollisionByProperty({collides: true}, true, true, obstacles);
     this.matter.world.convertTilemapLayer(obstacles);
     this.map.setCollisionByProperty({collides: true}, true, true, trees);
     this.matter.world.convertTilemapLayer(trees);
+    
+    canopy.setDepth(10)
+    this.map.setCollisionByProperty({obfuscates: true}, true, true, canopy);
+    canopy.setTileIndexCallback(canopy.getTilesWithin().map(tile => tile.index), (tile) =>
+      console.log("Collided!")
+    );
+
 
     console.log(this.map);
     
@@ -32,18 +42,14 @@ class WorldScene extends Phaser.Scene {
     this.lasers         = this.add.group({ classType: Laser,         runChildUpdate: true });
     
     this.player = this.soldiersGold.get().setActive(true).setVisible(true);
-    this.player.setPlayer()
-      .setOrigin(0.5, 0.5)
-      .setDisplaySize(132, 120)
-      .setPosition(2000, 300);
+    this.player.setPlayer().setPosition(2000, 300);
 
-    this.soldiersPurple.createFromConfig({
-      key: 'soldier-purple.png',
-      repeat: 5,
-      setOrigin: {x: 0.5, y: 0.5},  
-      setXY: {x: 400, y: 400, stepX: 400, stepY: 400},
-      setScale: { x: 2, y: 2 }
-    });
+    for (let s of [1,2,3,4]) {
+      this.soldiersBlue.get()
+        .setPosition(500 * s, 500 * s)
+        .setActive(true)
+        .setVisible(true);
+    }
 
     this.matter.world.setBounds(this.map.widthInPixels, this.map.heightInPixels)
     this.matter.world.createDebugGraphic();

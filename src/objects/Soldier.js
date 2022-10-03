@@ -31,15 +31,38 @@ class SmoothedControls {
   reset() { this.value = 0; }
 }
 
-class Soldier extends Phaser.Physics.Matter.Sprite {
+class Soldier extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, kind) {
-    super(scene.matter.world, x, y, `soldier-${kind}.png`);
+    super(scene, x, y, `soldier-${kind}.png`);
+    this.scene.matter.add.gameObject(this,  {
+      label: 'SoldierBody',
+      chamfer: { radius: 12 },
+      shape: {
+        type: 'rectangle',
+        width: this.width - 46,
+        height: this.height - 25,
+      },
+    });
+    this.setOrigin(0.37, 0.5);
+    this.setDisplaySize(132, 120);
+
+    // let new_bod = Phaser.Physics.Matter.Matter.Bodies.rectangle(
+    //   0, // x (has no impact)
+    //   0, // y (has no impact)
+    //   this.width - 35,
+    //   this.height - 20,
+    //   { chamfer: { radius: 10 }}
+    // );
+    // console.log(new_bod);
+    // this.setExistingBody(new_bod);
 
     this.isPlayer = false;
     
     this.team = kind;
 
     this.health = 3;
+
+    this.speed = {run: 10, walk: 7};
 
     // TODO: implement 10 second recharge
     this.charge = 10;
@@ -48,81 +71,6 @@ class Soldier extends Phaser.Physics.Matter.Sprite {
 
     // TODO: update detection logic
     this.target = this.scene.player;
-
-    // Matter JS collision bodies and sensors
-    this.blocked = {
-      left: false,
-      right: false,
-      top: false,
-      bottom: false
-    }
-    this.numTouching = {
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0
-    }
-    this.sensors = {
-      left: null,
-      right: null,
-      top: null,
-      bottom: null
-    }
-    this.time = {
-      leftDown: 0,
-      rightDown: 0,
-      topDown: 0,
-      bottomDown: 0
-    }
-    this.speed = {
-      run: 10,
-      walk: 7
-    }
-    const M = Phaser.Physics.Matter.Matter;
-    let [w,  h ] = [this.width, this.height];
-    let [sx, sy] = [w/2, h/2];
-
-    let mainBody        = M.Bodies.rectangle(sx,     sy, w * 0.75, h, { chamfer: { radius: 10 }});
-    this.sensors.left   = M.Bodies.rectangle(sx - w, h,  sx,       5, { isSensor: true });
-    this.sensors.right  = M.Bodies.rectangle(sx + w, h,  sx,       5, { isSensor: true });
-    this.sensors.top    = M.Bodies.rectangle(sx,     h,  sx - h,   5, { isSensor: true });
-    this.sensors.bottom = M.Bodies.rectangle(sx,     h,  sx + h,   5, { isSensor: true });
-    let compoundBody    = M.Body.create({
-      parts: [mainBody, this.sensors.left, this.sensors.right, this.sensors.top, this.sensors.bottom],
-      friction: 0.02,
-      restitution: 0.05
-    });
-    this.setExistingBody(compoundBody);
-    this.setPosition(x, y);
-
-    // Matter events
-
-    this.scene.matter.world.on('beforeupdate', (event) => {
-      this.numTouching.left   = 0;
-      this.numTouching.right  = 0;
-      this.numTouching.top    = 0;
-      this.numTouching.bottom = 0;
-    });
-
-    this.scene.matter.world.on('collisionactive', (event_pairs) => {
-      function either({bodyA, bodyB}, other) { bodyA === other || bodyB === other }
-      for (let event of event_pairs.pairs) {
-        if (either(event, this.body)) continue;
-        else if (either(event, this.sensors.left))   this.numTouching.left   += 1;
-        else if (either(event, this.sensors.right))  this.numTouching.right  += 1;
-        else if (either(event, this.sensors.top))    this.numTouching.top    += 1;
-        else if (either(event, this.sensors.bottom)) this.numTouching.bottom += 1;
-      }
-    });
-
-    this.scene.matter.world.on('afterupdate', (event) => {
-      this.blocked.left   = this.numTouching.left   > 0;
-      this.blocked.right  = this.numTouching.right  > 0;
-      this.blocked.top    = this.numTouching.top    > 0;
-      this.blocked.bottom = this.numTouching.bottom > 0;
-    });
-
-    this.scene.matter.add.gameObject(this);
 
     this.smooth = new SmoothedControls(this, 0.0005);
   }
@@ -133,20 +81,19 @@ class Soldier extends Phaser.Physics.Matter.Sprite {
   }
 
   update(time, delta) {
-    // if (this.isPlayer) constrainVelocity(this, 400);
 
     // TODO: fix the jumpiness when going back and forth
     if (this.isPlayer) {
-      if (this.keyA.isDown && !this.blocked.left) {
+      if (this.keyA.isDown) {
         this.smooth.moveLeft(delta);
         this.setVelocityX(this.transitionVelocity(-1, 'x'));
-      } else if (this.keyD.isDown && !this.blocked.right) {
+      } else if (this.keyD.isDown) {
         this.smooth.moveRight(delta);
         this.setVelocityX(this.transitionVelocity( 1, 'x'));
-      } else if (this.keyW.isDown && !this.blocked.top) {
+      } else if (this.keyW.isDown) {
         this.smooth.moveUp(delta);
         this.setVelocityY(this.transitionVelocity(-1, 'y'));
-      } else if (this.keyS.isDown && !this.blocked.bottom) {
+      } else if (this.keyS.isDown) {
         this.smooth.moveDown(delta);
         this.setVelocityY(this.transitionVelocity( 1, 'y'));
       } else { this.smooth.reset() }
@@ -205,23 +152,6 @@ class Soldier extends Phaser.Physics.Matter.Sprite {
     cam.scrollY = smoothFactor * cam.scrollY + (1 - smoothFactor) * (this.y - cam.height * 0.5);
   }
 }
-
-// ensure sprite speed doesn't exceed max velocity while update is called
-// function constrainVelocity(sprite, maxVelocity) {
-//     if (!sprite || !sprite.body) return;
-  
-//     let vx = sprite.body.velocity.x,
-//         vy = sprite.body.velocity.y;
-//     const currVelocitySqr = vx * vx + vy * vy;
-  
-//     if (currVelocitySqr > maxVelocity * maxVelocity) {
-//       const angle = Math.atan2(vy, vx);
-//       vx = Math.cos(angle) * maxVelocity;
-//       vy = Math.sin(angle) * maxVelocity;
-//       sprite.body.velocity.x = vx;
-//       sprite.body.velocity.y = vy;
-//     }
-// }
   
 function enemyFire(enemy, lasers, player, time) {
   if (enemy.active === false) return;
