@@ -20,20 +20,21 @@ const config = {
 
   // Configure physics settings
   physics: {
-    default: 'arcade',
+    default: 'matter',
     arcade: {
-      gravity: { y: CONFIG.DEFAULT_GRAVITY },
+      gravity: { x: 0, y: 0 },
+      debug: __DEV__
+    },
+    matter: {
+      gravity: { x: 0, y: 0 },
       debug: __DEV__
     }
   },
 
 }
 
-// Initialize the base phaser game object (must always be done once)
-const game = new Phaser.Game(config)
-
-// Add and auto-starting ExampleScene
-game.scene.add('StartScene', StartScene)
-game.scene.add('WorldScene', WorldScene)
-game.scene.add('HUDScene', HUDScene)
-game.scene.start('StartScene')
+const game = new Phaser.Game(config);
+game.scene.add('StartScene', StartScene);
+game.scene.add('WorldScene', WorldScene);
+game.scene.add('HUDScene', HUDScene);
+game.scene.start('StartScene');
