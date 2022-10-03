@@ -45,7 +45,12 @@ class Soldier extends Phaser.GameObjects.Sprite {
     });
     this.setOrigin(0.37, 0.5);
     this.setDisplaySize(132, 120);
-
+    this.setDepth(1);
+    this.setCollisionCategory(CONFIG.CATEGORY.SOLDIER);
+    this.setCollidesWith([
+      CONFIG.CATEGORY.SOLDIER,
+      CONFIG.CATEGORY.LASER
+    ]);
     // let new_bod = Phaser.Physics.Matter.Matter.Bodies.rectangle(
     //   0, // x (has no impact)
     //   0, // y (has no impact)
@@ -125,6 +130,15 @@ class Soldier extends Phaser.GameObjects.Sprite {
   // adds keybindings
   setPlayer() {
     this.isPlayer = true
+
+    this.body.label = 'PlayerBody';
+
+    this.setCollidesWith([
+      CONFIG.CATEGORY.SOLDIER,
+      CONFIG.CATEGORY.LASER,
+      CONFIG.CATEGORY.CANOPY // to support transparent canopies
+    ]);
+
     this.smoothMoveCameraTowardsMe();
 
     this.keyW = this.scene.input.keyboard.addKey('W');

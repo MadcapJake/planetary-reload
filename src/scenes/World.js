@@ -10,8 +10,9 @@ class WorldScene extends Phaser.Scene {
   create () {
     this.reticle = this.matter.add.image(0, 0, 'target.png');
     this.reticle.setOrigin(0.5, 0.5)
-      .setDisplaySize(25, 25)
+      .setDisplaySize(35, 35)
       .setSensor(true)
+      .setDepth(3)
       .setFixedRotation();
 
     this.map = this.add.tilemap('main.tmj');
@@ -22,27 +23,38 @@ class WorldScene extends Phaser.Scene {
     const canopy    = this.map.createLayer('Canopy',    'map_tiles');
     const territory = this.map.createLayer('Territory', 'map_tiles');
 
+    ground.setDepth(0);
+    obstacles.setDepth(1);
+    trees.setDepth(1);
+    canopy.setDepth(2);
+    territory.setDepth(3);
+
     this.map.setCollisionByProperty({collides: true}, true, true, obstacles);
-    this.matter.world.convertTilemapLayer(obstacles);
     this.map.setCollisionByProperty({collides: true}, true, true, trees);
-    this.matter.world.convertTilemapLayer(trees);
-    
-    canopy.setDepth(10)
     this.map.setCollisionByProperty({obfuscates: true}, true, true, canopy);
-    canopy.setTileIndexCallback(canopy.getTilesWithin().map(tile => tile.index), (tile) =>
-      console.log("Collided!")
-    );
 
+    this.matter.world.convertTilemapLayer(obstacles);
+    this.matter.world.convertTilemapLayer(trees);
+    this.matter.world.convertTilemapLayer(canopy);
 
-    console.log(this.map);
+    canopy.forEachTile(tile => {
+      if (tile.properties.obfuscates){ 
+        tile.physics.matterBody.body.label = 'ObfuscatingBody';
+        tile.physics.matterBody.setCollisionCategory(CONFIG.CATEGORY.CANOPY);
+        tile.physics.matterBody.setCollidesWith(CONFIG.CATEGORY.SOLDIER);
+      }
+    });
     
     this.soldiersGold   = this.add.group({ classType: SoldierGold,   runChildUpdate: true });
     this.soldiersPurple = this.add.group({ classType: SoldierPurple, runChildUpdate: true });
     this.soldiersBlue   = this.add.group({ classType: SoldierBlue,   runChildUpdate: true });
     this.lasers         = this.add.group({ classType: Laser,         runChildUpdate: true });
     
-    this.player = this.soldiersGold.get().setActive(true).setVisible(true);
-    this.player.setPlayer().setPosition(2000, 300);
+    this.player = this.soldiersGold.get()
+      .setPlayer()
+      .setPosition(2000, 300)
+      .setActive(true)
+      .setVisible(true);
 
     for (let s of [1,2,3,4]) {
       this.soldiersBlue.get()
@@ -84,6 +96,60 @@ class WorldScene extends Phaser.Scene {
       }
     });
 
+    this.canopyObfuscator = {
+      enabled: false,
+      timeEnabled: 0,
+      bodies: [],
+      enable(time, gameObject) {
+        this.enabled     = true;
+        this.timeEnabled = time;
+        if (!gameObject.tile.alpha) gameObject.tile.setAlpha(0.5);
+        this.bodies.push(gameObject);
+      },
+      reset() {
+        this.enabled = false;
+        this.timeEnabled = 0;
+        this.bodies.forEach(body => {
+          console.log(body);
+          body.tile.clearAlpha();
+          body.tile.physics.matterBody.setSensor(false);
+        })
+        this.bodies = [];
+      },
+      delayPassed(time) {
+        return this.timeEnabled < time - 500
+      },
+    }
+
+    this.matter.world.on('collisionstart', event => {
+      function getRootBody(body) {
+        if (body.parent === body) return body;
+        while (body.parent !== body) body = body.parent;
+        return body;
+      }
+      for (let {bodyA, bodyB} of event.pairs) {
+        bodyA = getRootBody(bodyA); bodyB = getRootBody(bodyB);
+        if (bodyA.label === 'PlayerBody' && bodyB.label === 'ObfuscatingBody') {
+          console.log("Under a tree!");
+          bodyA.gameObject.setCollidesWith([
+            CONFIG.CATEGORY.SOLDIER,
+            CONFIG.CATEGORY.LASER
+          ]);
+          this.canopyObfuscator.enable(this.time.now, bodyB.gameObject);
+
+        } else if (bodyA.label === 'ObfuscatingBody' && bodyB.label === 'PlayerBody') {
+          console.log("Under a tree!");
+          if (!bodyA.gameObject.tile.alpha) bodyA.gameObject.tile.setAlpha(0.2)
+          bodyB.gameObject.setCollidesWith([
+            CONFIG.CATEGORY.SOLDIER,
+            CONFIG.CATEGORY.LASER
+          ]);
+          this.canopyObfuscator.enable(this.time.now, bodyA.gameObject);
+   
+        }
+      }
+    })
+
     this.scene.run('HUDScene')
   }
 
@@ -91,6 +157,19 @@ class WorldScene extends Phaser.Scene {
     this.reticle.setVelocityX(this.player.body.velocity.x);
     this.reticle.setVelocityY(this.player.body.velocity.y);
     constrainReticle(this.player, this.reticle);
+
+    if (this.canopyObfuscator.enabled &&
+        this.canopyObfuscator.delayPassed(this.time.now)) {
+      if (!this.matter.overlap(this.player.body, this.canopyObfuscator.bodies)) {
+        console.log('clearing canopy alpha...');          
+        this.player.setCollidesWith([
+          CONFIG.CATEGORY.SOLDIER,
+          CONFIG.CATEGORY.LASER,
+          CONFIG.CATEGORY.CANOPY // to support transparent canopies
+        ]);
+        this.canopyObfuscator.reset();
+      }
+    }
   }
 
 }
