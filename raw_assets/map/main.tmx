@@ -10,53 +10,71 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="3">
-    <object id="26" class="SoldierBlocking" x="125.258" y="250.218" width="29.9375" height="250.395">
+    <object id="26" class="SoldierBlocking" x="125.258" y="248.855" width="29.9375" height="253.031">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="27" class="SoldierBlocking" x="249.738" y="595.363" width="250.468" height="30">
+    <object id="27" class="SoldierBlocking" x="249.613" y="595.051" width="250.343" height="29.9375">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="28" class="SoldierBlocking" x="595.084" y="474.564" width="30.0568" height="120.668"/>
-    <object id="29" class="SoldierBlocking" x="594.675" y="125.249" width="30.5" height="149.659"/>
-    <object id="30" class="SoldierBlocking" x="250.622" y="125.309" width="249.553" height="30.3043">
+    <object id="28" class="SoldierBlocking" x="595.084" y="474.564" width="30.0568" height="150.23">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="29" class="SoldierBlocking" x="594.675" y="125.249" width="30.5" height="149.659">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="30" class="SoldierBlocking" x="249.372" y="125.037" width="250.621" height="29.8498">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="31" class="LaserBlocking" x="125.425" y="625.696">
+    <object id="35" class="SoldierBlocking" x="500.157" y="595.052" width="94.7007" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="-0.111111,-0.377778 -0.222222,-124.356 29.7556,-124.333 29.7806,-30.325 123.767,-30.3222 123.766,-0.348958"/>
     </object>
-    <object id="32" class="LaserBlocking" x="625.048" y="625.807">
+    <object id="36" class="SoldierBlocking" x="125.12" y="594.936" width="124.246" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,-0.461047 0.222222,-151.766 -29.7556,-151.739 -29.9155,-30.4666 -124.723,-30.3971 -124.679,-0.425875"/>
     </object>
-    <object id="33" class="LaserBlocking" x="625.091" y="124.79">
+    <object id="38" class="SoldierBlocking" x="125.138" y="502.23" width="30.0568" height="92.7073">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,0.461047 0.222222,151.766 -29.7556,151.739 -29.9155,30.4666 -124.723,30.3971 -124.679,0.425875"/>
     </object>
-    <object id="34" class="LaserBlocking" x="125.3" y="125.655" rotation="90">
+    <object id="39" class="SoldierBlocking" x="125.044" y="125.299" width="123.871" height="30.3214">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0,0 0,-125 29,-125 30,-30 124,-30.3333 124,-0.333333"/>
+    </object>
+    <object id="40" class="SoldierBlocking" x="125.016" y="155.619" width="30.0568" height="93.1618">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="41" class="SoldierBlocking" x="500.059" y="125.14" width="94.7007" height="29.6737">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
     </object>
    </objectgroup>
   </tile>
@@ -65,53 +83,71 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
-    <object id="10" class="SoldierBlocking" x="625.243" y="500.776" width="29.9375" height="250.395" rotation="180">
+    <object id="19" class="SoldierBlocking" x="595.052" y="249.231" width="29.9375" height="253.031">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="11" class="SoldierBlocking" x="500.763" y="625.526" width="250.468" height="30" rotation="180">
+    <object id="20" class="SoldierBlocking" x="250.291" y="595.427" width="250.343" height="29.9375">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="12" class="SoldierBlocking" x="155.417" y="595.395" width="30.0568" height="120.668" rotation="180"/>
-    <object id="13" class="SoldierBlocking" x="155.826" y="275.072" width="30.5" height="149.659" rotation="180"/>
-    <object id="14" class="SoldierBlocking" x="499.879" y="155.776" width="249.553" height="30.3043" rotation="180">
+    <object id="21" class="SoldierBlocking" x="125.106" y="474.94" width="30.0568" height="150.23">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="22" class="SoldierBlocking" x="125.072" y="125.625" width="30.5" height="149.659">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="23" class="SoldierBlocking" x="250.254" y="125.413" width="250.621" height="29.8498">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="15" class="LaserBlocking" x="625.076" y="625.859" rotation="180">
+    <object id="24" class="SoldierBlocking" x="155.389" y="595.428" width="94.7007" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="-0.111111,0.377778 -0.222222,124.356 29.7556,124.333 29.7806,30.325 123.767,30.3222 123.766,0.348958"/>
     </object>
-    <object id="16" class="LaserBlocking" x="125.453" y="625.97" rotation="180">
+    <object id="25" class="SoldierBlocking" x="500.881" y="595.312" width="124.246" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,0.461047 0.222222,151.766 -29.7556,151.739 -29.9155,30.4666 -124.723,30.3971 -124.679,0.425875"/>
     </object>
-    <object id="17" class="LaserBlocking" x="125.41" y="124.953" rotation="180">
+    <object id="26" class="SoldierBlocking" x="595.052" y="502.606" width="30.0568" height="92.7073">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,-0.461047 0.222222,-151.766 -29.7556,-151.739 -29.9155,-30.4666 -124.723,-30.3971 -124.679,-0.425875"/>
     </object>
-    <object id="18" class="LaserBlocking" x="625.201" y="125.818" rotation="90">
+    <object id="27" class="SoldierBlocking" x="501.332" y="125.675" width="123.871" height="30.3214">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0,0 0,125 29,125 30,30 124,30.3333 124,0.333333"/>
+    </object>
+    <object id="28" class="SoldierBlocking" x="595.174" y="155.995" width="30.0568" height="93.1618">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="29" class="SoldierBlocking" x="155.487" y="125.516" width="94.7007" height="29.6737">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
     </object>
    </objectgroup>
   </tile>
@@ -169,53 +205,71 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
-    <object id="19" class="SoldierBlocking" x="248.829" y="624.462" width="29.9375" height="250.395" rotation="-90">
+    <object id="1" class="SoldierBlocking" x="594.901" y="250.087" width="29.9375" height="251.031">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="20" class="SoldierBlocking" x="593.974" y="499.982" width="250.468" height="30" rotation="-90">
+    <object id="2" class="SoldierBlocking" x="250.14" y="595.033" width="251.525" height="29.9375">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="21" class="SoldierBlocking" x="473.175" y="154.636" width="30.0568" height="120.668" rotation="-90"/>
-    <object id="22" class="SoldierBlocking" x="123.86" y="155.045" width="30.5" height="149.659" rotation="-90"/>
-    <object id="23" class="SoldierBlocking" x="123.92" y="499.098" width="249.553" height="30.3043" rotation="-90">
+    <object id="3" class="SoldierBlocking" x="124.955" y="500.88" width="29.8485" height="123.836">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="4" class="SoldierBlocking" x="124.921" y="125.106" width="30" height="124.659">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="5" class="SoldierBlocking" x="125.103" y="250.019" width="29.621" height="250.683">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="24" class="LaserBlocking" x="624.307" y="624.295" rotation="-90">
+    <object id="6" class="SoldierBlocking" x="155.238" y="594.909" width="94.5189" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="-0.111111,-0.377778 -0.222222,-124.356 29.7556,-124.333 29.7806,-30.325 123.767,-30.3222 123.766,-0.348958"/>
     </object>
-    <object id="25" class="LaserBlocking" x="624.418" y="124.672" rotation="-90">
+    <object id="7" class="SoldierBlocking" x="501.98" y="594.918" width="122.871" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,-0.461047 0.222222,-151.766 -29.7556,-151.739 -29.9155,-30.4666 -124.723,-30.3971 -124.679,-0.425875"/>
     </object>
-    <object id="26" class="LaserBlocking" x="123.401" y="124.629" rotation="-90">
+    <object id="8" class="SoldierBlocking" x="594.776" y="500.962" width="30.0568" height="93.8323">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,0.461047 0.222222,151.766 -29.7556,151.739 -29.9155,30.4666 -124.723,30.3971 -124.679,0.425875"/>
     </object>
-    <object id="27" class="LaserBlocking" x="124.266" y="624.42">
+    <object id="9" class="SoldierBlocking" x="475.306" y="124.781" width="149.621" height="30.3214">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0,0 0,-125 29,-125 30,-30 124,-30.3333 124,-0.333333"/>
+    </object>
+    <object id="10" class="SoldierBlocking" x="594.898" y="155.101" width="30.0568" height="94.7868">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="11" class="SoldierBlocking" x="155.086" y="124.997" width="120.951" height="29.6737">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
     </object>
    </objectgroup>
   </tile>
@@ -273,49 +327,71 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
    <objectgroup draworder="index" id="2">
-    <object id="1" class="SoldierBlocking" x="500.515" y="125.235" width="29.9375" height="250.395" rotation="90">
+    <object id="21" class="SoldierBlocking" x="594.63" y="248.508" width="29.9375" height="251.031">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="2" class="SoldierBlocking" x="625.265" y="249.715" width="250.468" height="30" rotation="90">
+    <object id="22" class="SoldierBlocking" x="249.869" y="124.655" width="251.525" height="29.9375">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="3" class="SoldierBlocking" x="595.134" y="595.061" width="30.0568" height="120.668" rotation="90"/>
-    <object id="4" class="SoldierBlocking" x="274.81" y="594.652" width="30.5" height="149.659" rotation="90"/>
-    <object id="5" class="SoldierBlocking" x="155.515" y="250.599" width="249.553" height="30.3043" rotation="90">
+    <object id="23" class="SoldierBlocking" x="124.684" y="124.91" width="29.8485" height="123.836">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="24" class="SoldierBlocking" x="124.65" y="499.861" width="30" height="124.659">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="25" class="SoldierBlocking" x="124.832" y="248.924" width="29.621" height="250.683">
      <properties>
       <property name="laserColliding" type="bool" value="false"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
     </object>
-    <object id="6" class="LaserBlocking" x="625.598" y="125.402" rotation="90">
-     <polygon points="-0.111111,0.377778 -0.222222,124.356 29.7556,124.333 29.7806,30.325 123.767,30.3222 123.766,0.348958"/>
-    </object>
-    <object id="7" class="LaserBlocking" x="625.709" y="625.025" rotation="90">
+    <object id="26" class="SoldierBlocking" x="154.967" y="124.77" width="94.5189" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,0.461047 0.222222,151.766 -29.7556,151.739 -29.9155,30.4666 -124.723,30.3971 -124.679,0.425875"/>
     </object>
-    <object id="8" class="LaserBlocking" x="124.692" y="625.068" rotation="90">
+    <object id="27" class="SoldierBlocking" x="501.709" y="124.761" width="122.871" height="29.9464">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0.111111,-0.461047 0.222222,-151.766 -29.7556,-151.739 -29.9155,-30.4666 -124.723,-30.3971 -124.679,-0.425875"/>
     </object>
-    <object id="9" class="LaserBlocking" x="125.557" y="125.277">
+    <object id="28" class="SoldierBlocking" x="594.505" y="154.831" width="30.0568" height="93.8323">
      <properties>
       <property name="laserColliding" type="bool" value="true"/>
       <property name="soldierColliding" type="bool" value="true"/>
      </properties>
-     <polygon points="0,0 0,125 29,125 30,30 124,30.3333 124,0.333333"/>
+    </object>
+    <object id="29" class="SoldierBlocking" x="475.035" y="594.523" width="149.621" height="30.3214">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="30" class="SoldierBlocking" x="594.627" y="499.738" width="30.0568" height="94.7868">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
+    </object>
+    <object id="31" class="SoldierBlocking" x="154.815" y="594.955" width="120.951" height="29.6737">
+     <properties>
+      <property name="laserColliding" type="bool" value="true"/>
+      <property name="soldierColliding" type="bool" value="true"/>
+     </properties>
     </object>
    </objectgroup>
   </tile>

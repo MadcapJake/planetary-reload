@@ -101,7 +101,7 @@
                      "objects":[
                             {
                              "class":"SoldierBlocking",
-                             "height":250.395,
+                             "height":253.031363636364,
                              "id":26,
                              "name":"",
                              "properties":[
@@ -119,11 +119,11 @@
                              "visible":true,
                              "width":29.9375,
                              "x":125.2585,
-                             "y":250.218333333333
+                             "y":248.854696969697
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30,
+                             "height":29.9375,
                              "id":27,
                              "name":"",
                              "properties":[
@@ -139,15 +139,26 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":250.468,
-                             "x":249.7385,
-                             "y":595.363333333333
+                             "width":250.343,
+                             "x":249.6135,
+                             "y":595.050833333333
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":120.668,
+                             "height":150.2305,
                              "id":28,
                              "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
                              "rotation":0,
                              "visible":true,
                              "width":30.0568,
@@ -159,6 +170,17 @@
                              "height":149.659,
                              "id":29,
                              "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
                              "rotation":0,
                              "visible":true,
                              "width":30.5,
@@ -167,7 +189,7 @@
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30.3043,
+                             "height":29.8497545454546,
                              "id":30,
                              "name":"",
                              "properties":[
@@ -183,40 +205,15 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":249.553,
-                             "x":250.6225,
-                             "y":125.309333333333
+                             "width":250.621181818182,
+                             "x":249.3725,
+                             "y":125.036606060606
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":31,
+                             "class":"SoldierBlocking",
+                             "height":29.9464090909091,
+                             "id":35,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":-0.111111,
-                                     "y":-0.377778
-                                    }, 
-                                    {
-                                     "x":-0.222222,
-                                     "y":-124.356
-                                    }, 
-                                    {
-                                     "x":29.7556,
-                                     "y":-124.333
-                                    }, 
-                                    {
-                                     "x":29.7806,
-                                     "y":-30.325
-                                    }, 
-                                    {
-                                     "x":123.767,
-                                     "y":-30.3222
-                                    }, 
-                                    {
-                                     "x":123.766,
-                                     "y":-0.348958
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -230,40 +227,15 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":125.4255,
-                             "y":625.696333333333
+                             "width":94.7007393939393,
+                             "x":500.157206060606,
+                             "y":595.052363636364
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":32,
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":36,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":-0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":-151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":-151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":-30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":-30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":-0.425875
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -277,40 +249,15 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":625.0485,
-                             "y":625.807333333333
+                             "width":124.245727272727,
+                             "x":125.119560606061,
+                             "y":594.935890909091
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":33,
+                             "class":"SoldierBlocking",
+                             "height":92.7072727272727,
+                             "id":38,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":0.425875
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -324,40 +271,15 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":625.0915,
-                             "y":124.790333333333
+                             "width":30.0568,
+                             "x":125.138266666667,
+                             "y":502.229696969697
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":34,
+                             "class":"SoldierBlocking",
+                             "height":30.3214,
+                             "id":39,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0,
-                                     "y":0
-                                    }, 
-                                    {
-                                     "x":0,
-                                     "y":-125
-                                    }, 
-                                    {
-                                     "x":29,
-                                     "y":-125
-                                    }, 
-                                    {
-                                     "x":30,
-                                     "y":-30
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":-30.3333
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":-0.333333
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -369,11 +291,55 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":90,
+                             "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":125.3005,
-                             "y":125.655333333333
+                             "width":123.871,
+                             "x":125.043666666667,
+                             "y":125.2988
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":93.1618454545455,
+                             "id":40,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":125.016212121212,
+                             "y":155.6189
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.6736727272728,
+                             "id":41,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":94.7007,
+                             "x":500.058740909091,
+                             "y":125.140436363636
                             }],
                      "opacity":1,
                      "type":"objectgroup",
@@ -398,8 +364,8 @@
                      "objects":[
                             {
                              "class":"SoldierBlocking",
-                             "height":250.395,
-                             "id":10,
+                             "height":253.031,
+                             "id":19,
                              "name":"",
                              "properties":[
                                     {
@@ -412,16 +378,16 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
                              "width":29.9375,
-                             "x":625.243166666667,
-                             "y":500.7765
+                             "x":595.051515151515,
+                             "y":249.231239393939
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30,
-                             "id":11,
+                             "height":29.9375,
+                             "id":20,
                              "name":"",
                              "properties":[
                                     {
@@ -434,38 +400,60 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
-                             "width":250.468,
-                             "x":500.763166666667,
-                             "y":625.5265
+                             "width":250.343,
+                             "x":250.291015151515,
+                             "y":595.427239393939
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":120.668,
-                             "id":12,
+                             "height":150.23,
+                             "id":21,
                              "name":"",
-                             "rotation":180,
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
                              "visible":true,
                              "width":30.0568,
-                             "x":155.417166666667,
-                             "y":595.3955
+                             "x":125.106215151515,
+                             "y":474.940239393939
                             }, 
                             {
                              "class":"SoldierBlocking",
                              "height":149.659,
-                             "id":13,
+                             "id":22,
                              "name":"",
-                             "rotation":180,
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
                              "visible":true,
                              "width":30.5,
-                             "x":155.826166666666,
-                             "y":275.0715
+                             "x":125.072015151515,
+                             "y":125.625239393939
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30.3043,
-                             "id":14,
+                             "height":29.8498,
+                             "id":23,
                              "name":"",
                              "properties":[
                                     {
@@ -478,42 +466,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
-                             "width":249.553,
-                             "x":499.879166666667,
-                             "y":155.7765
+                             "width":250.621,
+                             "x":250.254015151515,
+                             "y":125.413239393939
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":15,
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":24,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":-0.111111,
-                                     "y":0.377778
-                                    }, 
-                                    {
-                                     "x":-0.222222,
-                                     "y":124.356
-                                    }, 
-                                    {
-                                     "x":29.7556,
-                                     "y":124.333
-                                    }, 
-                                    {
-                                     "x":29.7806,
-                                     "y":30.325
-                                    }, 
-                                    {
-                                     "x":123.767,
-                                     "y":30.3222
-                                    }, 
-                                    {
-                                     "x":123.766,
-                                     "y":0.348958
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -525,42 +488,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":625.076166666667,
-                             "y":625.8595
+                             "width":94.7007,
+                             "x":155.389315151515,
+                             "y":595.428239393939
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":16,
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":25,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":0.425875
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -572,42 +510,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":125.453166666667,
-                             "y":625.9705
+                             "width":124.246,
+                             "x":500.881015151515,
+                             "y":595.312239393939
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":17,
+                             "class":"SoldierBlocking",
+                             "height":92.7073,
+                             "id":26,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":-0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":-151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":-151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":-30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":-30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":-0.425875
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -619,42 +532,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":180,
+                             "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":125.410166666667,
-                             "y":124.9535
+                             "width":30.0568,
+                             "x":595.052215151515,
+                             "y":502.606239393939
                             }, 
                             {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":18,
+                             "class":"SoldierBlocking",
+                             "height":30.3214,
+                             "id":27,
                              "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0,
-                                     "y":0
-                                    }, 
-                                    {
-                                     "x":0,
-                                     "y":125
-                                    }, 
-                                    {
-                                     "x":29,
-                                     "y":125
-                                    }, 
-                                    {
-                                     "x":30,
-                                     "y":30
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":30.3333
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":0.333333
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -666,11 +554,55 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":90,
+                             "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":625.201166666667,
-                             "y":125.8185
+                             "width":123.871,
+                             "x":501.332015151515,
+                             "y":125.675239393939
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":93.1618,
+                             "id":28,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":595.174215151515,
+                             "y":155.995239393939
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.6737,
+                             "id":29,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":94.7007,
+                             "x":155.487315151515,
+                             "y":125.516239393939
                             }],
                      "opacity":1,
                      "type":"objectgroup",
@@ -1077,8 +1009,8 @@
                      "objects":[
                             {
                              "class":"SoldierBlocking",
-                             "height":250.395,
-                             "id":19,
+                             "height":251.031,
+                             "id":1,
                              "name":"",
                              "properties":[
                                     {
@@ -1091,16 +1023,16 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":-90,
+                             "rotation":0,
                              "visible":true,
                              "width":29.9375,
-                             "x":248.829333333333,
-                             "y":624.462
+                             "x":594.9006,
+                             "y":250.0873
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30,
-                             "id":20,
+                             "height":29.9375,
+                             "id":2,
                              "name":"",
                              "properties":[
                                     {
@@ -1113,227 +1045,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":-90,
+                             "rotation":0,
                              "visible":true,
-                             "width":250.468,
-                             "x":593.974333333333,
-                             "y":499.982
+                             "width":251.524818181818,
+                             "x":250.1396,
+                             "y":595.0333
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":120.668,
-                             "id":21,
+                             "height":123.836060606061,
+                             "id":3,
                              "name":"",
-                             "rotation":-90,
-                             "visible":true,
-                             "width":30.0568,
-                             "x":473.175333333333,
-                             "y":154.636
-                            }, 
-                            {
-                             "class":"SoldierBlocking",
-                             "height":149.659,
-                             "id":22,
-                             "name":"",
-                             "rotation":-90,
-                             "visible":true,
-                             "width":30.5,
-                             "x":123.860333333333,
-                             "y":155.045
-                            }, 
-                            {
-                             "class":"SoldierBlocking",
-                             "height":30.3043,
-                             "id":23,
-                             "name":"",
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":false
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":-90,
-                             "visible":true,
-                             "width":249.553,
-                             "x":123.920033333333,
-                             "y":499.098
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":24,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":-0.111111,
-                                     "y":-0.377778
-                                    }, 
-                                    {
-                                     "x":-0.222222,
-                                     "y":-124.356
-                                    }, 
-                                    {
-                                     "x":29.7556,
-                                     "y":-124.333
-                                    }, 
-                                    {
-                                     "x":29.7806,
-                                     "y":-30.325
-                                    }, 
-                                    {
-                                     "x":123.767,
-                                     "y":-30.3222
-                                    }, 
-                                    {
-                                     "x":123.766,
-                                     "y":-0.348958
-                                    }],
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":-90,
-                             "visible":true,
-                             "width":0,
-                             "x":624.307333333333,
-                             "y":624.295
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":25,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":-0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":-151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":-151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":-30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":-30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":-0.425875
-                                    }],
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":-90,
-                             "visible":true,
-                             "width":0,
-                             "x":624.418333333333,
-                             "y":124.672
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":26,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":0.425875
-                                    }],
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":-90,
-                             "visible":true,
-                             "width":0,
-                             "x":123.401333333333,
-                             "y":124.629
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":27,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0,
-                                     "y":0
-                                    }, 
-                                    {
-                                     "x":0,
-                                     "y":-125
-                                    }, 
-                                    {
-                                     "x":29,
-                                     "y":-125
-                                    }, 
-                                    {
-                                     "x":30,
-                                     "y":-30
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":-30.3333
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":-0.333333
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -1347,9 +1069,185 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":124.266333333333,
-                             "y":624.42
+                             "width":29.8484666666667,
+                             "x":124.9546,
+                             "y":500.879633333333
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":124.659,
+                             "id":4,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30,
+                             "x":124.9206,
+                             "y":125.1063
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":250.683133333333,
+                             "id":5,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":false
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":29.621,
+                             "x":125.1026,
+                             "y":250.0193
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":6,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":94.5188818181818,
+                             "x":155.2376,
+                             "y":594.9093
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":7,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":122.871,
+                             "x":501.9796,
+                             "y":594.9183
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":93.8323,
+                             "id":8,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":594.7756,
+                             "y":500.9623
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":30.3214,
+                             "id":9,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":149.621,
+                             "x":475.3056,
+                             "y":124.7813
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":94.7868,
+                             "id":10,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":594.8976,
+                             "y":155.1013
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.6737,
+                             "id":11,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":120.9507,
+                             "x":155.0856,
+                             "y":124.9973
                             }],
                      "opacity":1,
                      "type":"objectgroup",
@@ -1756,8 +1654,8 @@
                      "objects":[
                             {
                              "class":"SoldierBlocking",
-                             "height":250.395151515152,
-                             "id":1,
+                             "height":251.031,
+                             "id":21,
                              "name":"",
                              "properties":[
                                     {
@@ -1770,16 +1668,16 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":90,
+                             "rotation":0,
                              "visible":true,
                              "width":29.9375,
-                             "x":500.514924242424,
-                             "y":125.234772727273
+                             "x":594.629766666667,
+                             "y":248.50775
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":30,
-                             "id":2,
+                             "height":29.9375,
+                             "id":22,
                              "name":"",
                              "properties":[
                                     {
@@ -1792,216 +1690,17 @@
                                      "type":"bool",
                                      "value":true
                                     }],
-                             "rotation":90,
+                             "rotation":0,
                              "visible":true,
-                             "width":250.468303030303,
-                             "x":625.264590909091,
-                             "y":249.714772727273
+                             "width":251.525,
+                             "x":249.868766666667,
+                             "y":124.65525
                             }, 
                             {
                              "class":"SoldierBlocking",
-                             "height":120.668,
-                             "id":3,
+                             "height":123.836,
+                             "id":23,
                              "name":"",
-                             "rotation":90,
-                             "visible":true,
-                             "width":30.0568,
-                             "x":595.133590909091,
-                             "y":595.060772727273
-                            }, 
-                            {
-                             "class":"SoldierBlocking",
-                             "height":149.659,
-                             "id":4,
-                             "name":"",
-                             "rotation":90,
-                             "visible":true,
-                             "width":30.5,
-                             "x":274.809590909091,
-                             "y":594.651772727273
-                            }, 
-                            {
-                             "class":"SoldierBlocking",
-                             "height":30.3043,
-                             "id":5,
-                             "name":"",
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":false
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":90,
-                             "visible":true,
-                             "width":249.552666666667,
-                             "x":155.514590909091,
-                             "y":250.599106060606
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":6,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":-0.111111,
-                                     "y":0.377778
-                                    }, 
-                                    {
-                                     "x":-0.222222,
-                                     "y":124.356
-                                    }, 
-                                    {
-                                     "x":29.7556,
-                                     "y":124.333
-                                    }, 
-                                    {
-                                     "x":29.7806,
-                                     "y":30.325
-                                    }, 
-                                    {
-                                     "x":123.767,
-                                     "y":30.3222
-                                    }, 
-                                    {
-                                     "x":123.766,
-                                     "y":0.348958
-                                    }],
-                             "rotation":90,
-                             "visible":true,
-                             "width":0,
-                             "x":625.597590909091,
-                             "y":125.401772727273
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":7,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":0.425875
-                                    }],
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":90,
-                             "visible":true,
-                             "width":0,
-                             "x":625.708590909091,
-                             "y":625.024772727273
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":8,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0.111111,
-                                     "y":-0.461047
-                                    }, 
-                                    {
-                                     "x":0.222222,
-                                     "y":-151.766
-                                    }, 
-                                    {
-                                     "x":-29.7556,
-                                     "y":-151.739
-                                    }, 
-                                    {
-                                     "x":-29.9155,
-                                     "y":-30.4666
-                                    }, 
-                                    {
-                                     "x":-124.723,
-                                     "y":-30.3971
-                                    }, 
-                                    {
-                                     "x":-124.679,
-                                     "y":-0.425875
-                                    }],
-                             "properties":[
-                                    {
-                                     "name":"laserColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }, 
-                                    {
-                                     "name":"soldierColliding",
-                                     "type":"bool",
-                                     "value":true
-                                    }],
-                             "rotation":90,
-                             "visible":true,
-                             "width":0,
-                             "x":124.691590909091,
-                             "y":625.067772727273
-                            }, 
-                            {
-                             "class":"LaserBlocking",
-                             "height":0,
-                             "id":9,
-                             "name":"",
-                             "polygon":[
-                                    {
-                                     "x":0,
-                                     "y":0
-                                    }, 
-                                    {
-                                     "x":0,
-                                     "y":125
-                                    }, 
-                                    {
-                                     "x":29,
-                                     "y":125
-                                    }, 
-                                    {
-                                     "x":30,
-                                     "y":30
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":30.3333
-                                    }, 
-                                    {
-                                     "x":124,
-                                     "y":0.333333
-                                    }],
                              "properties":[
                                     {
                                      "name":"laserColliding",
@@ -2015,9 +1714,185 @@
                                     }],
                              "rotation":0,
                              "visible":true,
-                             "width":0,
-                             "x":125.556590909091,
-                             "y":125.276772727273
+                             "width":29.8485,
+                             "x":124.683766666667,
+                             "y":124.90975
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":124.659,
+                             "id":24,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30,
+                             "x":124.649766666667,
+                             "y":499.86075
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":250.683,
+                             "id":25,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":false
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":29.621,
+                             "x":124.831766666667,
+                             "y":248.92375
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":26,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":94.5189,
+                             "x":154.966766666667,
+                             "y":124.77035
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.9464,
+                             "id":27,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":122.871,
+                             "x":501.708766666667,
+                             "y":124.76135
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":93.8323,
+                             "id":28,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":594.504766666667,
+                             "y":154.83145
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":30.3214,
+                             "id":29,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":149.621,
+                             "x":475.034766666667,
+                             "y":594.52335
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":94.7868,
+                             "id":30,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":30.0568,
+                             "x":594.626766666667,
+                             "y":499.73795
+                            }, 
+                            {
+                             "class":"SoldierBlocking",
+                             "height":29.6737,
+                             "id":31,
+                             "name":"",
+                             "properties":[
+                                    {
+                                     "name":"laserColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }, 
+                                    {
+                                     "name":"soldierColliding",
+                                     "type":"bool",
+                                     "value":true
+                                    }],
+                             "rotation":0,
+                             "visible":true,
+                             "width":120.951,
+                             "x":154.814766666667,
+                             "y":594.95505
                             }],
                      "opacity":1,
                      "type":"objectgroup",
