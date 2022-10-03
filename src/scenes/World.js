@@ -11,7 +11,7 @@ class WorldScene extends Phaser.Scene {
     this.reticle = this.matter.add.image(0, 0, 'target.png');
     this.reticle.setOrigin(0.5, 0.5)
       .setDisplaySize(25, 25)
-      .setCollisionGroup()
+      .setSensor(true)
       .setFixedRotation();
 
     this.map = this.add.tilemap('main.tmj');
