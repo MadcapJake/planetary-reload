@@ -4,6 +4,7 @@ import CONFIG from '../config.js'
 
 import {SoldierBlue, SoldierGold, SoldierPurple} from '../objects/Soldier.js'
 import Laser from '../objects/Laser.js'
+import CanopiesManager from '../managers/Canopies.js';
 
 class WorldScene extends Phaser.Scene {
   preload () {}
@@ -16,7 +17,8 @@ class WorldScene extends Phaser.Scene {
       .setFixedRotation();
 
     this.map = this.add.tilemap('main.tmj');
-    const tileset   = this.map.addTilesetImage('map_tiles', 'main.png');
+    this.map.addTilesetImage('map_tiles', 'main.png');
+    this.layers = {};
     const ground    = this.map.createLayer('Ground',    'map_tiles'); 
     const obstacles = this.map.createLayer('Obstacles', 'map_tiles');
     const trees     = this.map.createLayer('Trees',     'map_tiles');
@@ -37,11 +39,13 @@ class WorldScene extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(trees);
     this.matter.world.convertTilemapLayer(canopy);
 
-    canopy.forEachTile(tile => {
+    this.canopies = new CanopiesManager(this);
+    this.layers.canopy.forEachTile(tile => {
       if (tile.properties.obfuscates){ 
         tile.physics.matterBody.body.label = 'ObfuscatingBody';
         tile.physics.matterBody.setCollisionCategory(CONFIG.CATEGORY.CANOPY);
         tile.physics.matterBody.setCollidesWith(CONFIG.CATEGORY.SOLDIER);
+        this.canopies.add(tile.physics.matterBody);
       }
     });
     
@@ -72,7 +76,7 @@ class WorldScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
     this.cameras.main.roundPixels = true;
-    this.cameras.main.ignore(territory);
+    this.cameras.main.ignore(this.layers.territory);
 
     // Fires laser from player on left click of mouse
     this.input.on('pointerdown', (pointer, time, lastFired) => {
@@ -96,60 +100,6 @@ class WorldScene extends Phaser.Scene {
       }
     });
 
-    this.canopyObfuscator = {
-      enabled: false,
-      timeEnabled: 0,
-      bodies: [],
-      enable(time, gameObject) {
-        this.enabled     = true;
-        this.timeEnabled = time;
-        if (!gameObject.tile.alpha) gameObject.tile.setAlpha(0.5);
-        this.bodies.push(gameObject);
-      },
-      reset() {
-        this.enabled = false;
-        this.timeEnabled = 0;
-        this.bodies.forEach(body => {
-          console.log(body);
-          body.tile.clearAlpha();
-          body.tile.physics.matterBody.setSensor(false);
-        })
-        this.bodies = [];
-      },
-      delayPassed(time) {
-        return this.timeEnabled < time - 500
-      },
-    }
-
-    this.matter.world.on('collisionstart', event => {
-      function getRootBody(body) {
-        if (body.parent === body) return body;
-        while (body.parent !== body) body = body.parent;
-        return body;
-      }
-      for (let {bodyA, bodyB} of event.pairs) {
-        bodyA = getRootBody(bodyA); bodyB = getRootBody(bodyB);
-        if (bodyA.label === 'PlayerBody' && bodyB.label === 'ObfuscatingBody') {
-          console.log("Under a tree!");
-          bodyA.gameObject.setCollidesWith([
-            CONFIG.CATEGORY.SOLDIER,
-            CONFIG.CATEGORY.LASER
-          ]);
-          this.canopyObfuscator.enable(this.time.now, bodyB.gameObject);
-
-        } else if (bodyA.label === 'ObfuscatingBody' && bodyB.label === 'PlayerBody') {
-          console.log("Under a tree!");
-          if (!bodyA.gameObject.tile.alpha) bodyA.gameObject.tile.setAlpha(0.2)
-          bodyB.gameObject.setCollidesWith([
-            CONFIG.CATEGORY.SOLDIER,
-            CONFIG.CATEGORY.LASER
-          ]);
-          this.canopyObfuscator.enable(this.time.now, bodyA.gameObject);
-   
-        }
-      }
-    })
-
     this.scene.run('HUDScene')
   }
 
@@ -158,18 +108,16 @@ class WorldScene extends Phaser.Scene {
     this.reticle.setVelocityY(this.player.body.velocity.y);
     constrainReticle(this.player, this.reticle);
 
-    if (this.canopyObfuscator.enabled &&
-        this.canopyObfuscator.delayPassed(this.time.now)) {
-      if (!this.matter.overlap(this.player.body, this.canopyObfuscator.bodies)) {
-        console.log('clearing canopy alpha...');          
-        this.player.setCollidesWith([
-          CONFIG.CATEGORY.SOLDIER,
-          CONFIG.CATEGORY.LASER,
-          CONFIG.CATEGORY.CANOPY // to support transparent canopies
-        ]);
-        this.canopyObfuscator.reset();
-      }
-    }
+    // canopy control
+
+    this.matter.overlap(
+      /* target */ this.player.body,
+      /* bodies */ this.canopies.bodies,
+      /* finish */ (_, b2) => this.canopies.enable(b2.parent.gameObject.tile)
+    );
+    
+    if (this.canopies.enabled && this.canopies.delayPassed() &&
+        !this.matter.overlap(this.player.body, this.canopies.bodies)) this.canopies.reset();
   }
 
 }

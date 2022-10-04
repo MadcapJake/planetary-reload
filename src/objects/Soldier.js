@@ -137,7 +137,6 @@ class Soldier extends Phaser.GameObjects.Sprite {
     this.setCollidesWith([
       CONFIG.CATEGORY.SOLDIER,
       CONFIG.CATEGORY.LASER,
-      CONFIG.CATEGORY.CANOPY // to support transparent canopies
     ]);
 
     this.smoothMoveCameraTowardsMe();
