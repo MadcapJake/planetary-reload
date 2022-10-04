@@ -95,7 +95,8 @@ class Soldier extends Phaser.GameObjects.Sprite {
       } else if (this.keyD.isDown) {
         this.smooth.moveRight(delta);
         this.setVelocityX(this.transitionVelocity( 1, 'x'));
-      } else if (this.keyW.isDown) {
+      }
+      if (this.keyW.isDown) {
         this.smooth.moveUp(delta);
         this.setVelocityY(this.transitionVelocity(-1, 'y'));
       } else if (this.keyS.isDown) {
