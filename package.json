@@ -7,7 +7,7 @@
 
     "dev": "esbuild src/main.js --serve=3000 --servedir=public --bundle --sourcemap --target=es6 --define:__DEV__=true --outfile=public/bundle.js",
     "prod": "esbuild src/main.js --serve=3000 --servedir=public --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js",
-    "build": "esbuild src/main.js --bundle --minify --target=es6 --define:__DEV__=false --outfile=public/bundle.js",
+    "build": "esbuild src/main.js --bundle --target=es6 --define:__DEV__=false --outfile=public/bundle.js",
 
     "preinstall": "npx npm-force-resolutions"
   },

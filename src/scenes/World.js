@@ -40,7 +40,7 @@ class WorldScene extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(canopy);
 
     this.canopies = new CanopiesManager(this);
-    this.layers.canopy.forEachTile(tile => {
+    canopy.forEachTile(tile => {
       if (tile.properties.obfuscates){ 
         tile.physics.matterBody.body.label = 'ObfuscatingBody';
         tile.physics.matterBody.setCollisionCategory(CONFIG.CATEGORY.CANOPY);
@@ -76,7 +76,7 @@ class WorldScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
     this.cameras.main.roundPixels = true;
-    this.cameras.main.ignore(this.layers.territory);
+    this.cameras.main.ignore(territory);
 
     // Fires laser from player on left click of mouse
     this.input.on('pointerdown', (pointer, time, lastFired) => {
