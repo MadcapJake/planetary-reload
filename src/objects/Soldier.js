@@ -2,35 +2,6 @@ import Phaser from 'phaser'
 
 import CONFIG from '../config.js'
 
-class SmoothedControls {
-  constructor(controller, speed) {
-    this.msSpeed = speed;
-    this.value = 0;
-  }
-  moveLeft(delta) {
-    if (this.value > 0) this.reset();
-    this.value -= this.msSpeed * delta;
-    if (this.value < 1) this.value = -1;
-    // controller.time.rightDown += delta;
-  }
-  moveRight(delta) {
-    if (this.value < 0) this.reset();
-    this.value += this.msSpeed * delta;
-    if (this.value > 1) this.value = 1;
-  }
-  moveUp(delta) {
-    if (this.value > 0) this.reset();
-    this.value -= this.msSpeed * delta;
-    if (this.value < 1) this.value = -1;
-  }
-  moveDown(delta) {
-    if (this.value < 0) this.reset();
-    this.value += this.msSpeed * delta;
-    if (this.value > 1) this.value = 1;
-  }
-  reset() { this.value = 0; }
-}
-
 class Soldier extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, kind) {
     super(scene, x, y, `soldier-${kind}.png`);
@@ -174,6 +145,35 @@ function enemyFire(enemy, lasers, player, time) {
     let laser = lasers.get().setActive(true).setVisible(true);
     if (laser) laser.fire(enemy, player);
   }
+}
+
+class SmoothedControls {
+  constructor(controller, speed) {
+    this.msSpeed = speed;
+    this.value = 0;
+  }
+  moveLeft(delta) {
+    if (this.value > 0) this.reset();
+    this.value -= this.msSpeed * delta;
+    if (this.value < 1) this.value = -1;
+    // controller.time.rightDown += delta;
+  }
+  moveRight(delta) {
+    if (this.value < 0) this.reset();
+    this.value += this.msSpeed * delta;
+    if (this.value > 1) this.value = 1;
+  }
+  moveUp(delta) {
+    if (this.value > 0) this.reset();
+    this.value -= this.msSpeed * delta;
+    if (this.value < 1) this.value = -1;
+  }
+  moveDown(delta) {
+    if (this.value < 0) this.reset();
+    this.value += this.msSpeed * delta;
+    if (this.value > 1) this.value = 1;
+  }
+  reset() { this.value = 0; }
 }
 
 export class SoldierBlue extends Soldier {
