@@ -611,6 +611,14 @@
     </object>
    </objectgroup>
   </tile>
+  <tile id="25">
+   <properties>
+    <property name="obfuscates" type="bool" value="true"/>
+   </properties>
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="144" y="144.833" width="460.833" height="458"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer id="1" name="Ground" width="25" height="25">
   <data encoding="base64">
