@@ -2,15 +2,50 @@ import Phaser from 'phaser'
 
 import CONFIG from '../config.js'
 
-class Laser extends Phaser.GameObjects.Image {
+class Laser extends Phaser.GameObjects.Sprite {
   constructor(scene) {
     super(scene, 0, 0, 'laser_bolt.png');
-    this.speed = 1;
+    this.scene.matter.add.gameObject(this, {
+      label: 'LaserBody',
+      // chamfer: { radius: 4},
+      shape: {
+        type: 'rectangle',
+        width: this.width,
+        height: this.height,
+      },
+      restitution: 0.5
+    })
+    this.speed = 2;
     this.born = 0;
     this.direction = 0;
     this.xSpeed = 0;
     this.ySpeed = 0;
+    this.setOrigin(0);
+    this.setDepth(1);
     this.setDisplaySize(12, 12);
+    this.setCollisionCategory(CONFIG.CATEGORY.LASER);
+    this.setCollidesWith([
+      CONFIG.CATEGORY.SOLDIER,
+      CONFIG.CATEGORY.OBSTACLE
+    ])
+    this.setOnCollide(() => {
+      // A body may collide with multiple other bodies in a step, so we'll use a flag to
+      // only tween & destroy the lsaer once.
+      if (this.isBeingDestroyed) return;
+      
+      this.isBeingDestroyed = true;
+
+      this.setMass(Infinity);
+      // this.body.allowGravity = false;
+      // this.body.inertia = -this.body.inertia;
+      this.setVelocity(0);
+
+      this.scene.tweens.add({
+        targets: this,
+        alpha: { value: 0, duration: 500, ease: 'Expo' },
+        onComplete: () => this.destroy()
+      });
+    });
   }
 
   fire(shooter, target) {
@@ -27,18 +62,21 @@ class Laser extends Phaser.GameObjects.Image {
     }
 
     // start the laser a little ways off from center to prevent early collisions
-    this.x += this.xSpeed * 90;
-    this.y += this.ySpeed * 90;
+    this.x += this.xSpeed * 5;
+    this.y += this.ySpeed * 5;
 
     this.rotation = shooter.rotation; // angle laser with shooters rotation
     
     this.born = 0; // time since new laser spawned
 
-    this.scene.physics.add.collider(
-      [this.scene.soldiersGold, this.scene.soldiersPurple, this.scene.soldiersBlue],
-      this,
-      enemyHitCallback.bind(this.scene)
-    );
+    this.setActive(true);
+    this.setVisible(true);
+
+    // this.scene.physics.add.collider(
+    //   [this.scene.soldiersGold, this.scene.soldiersPurple, this.scene.soldiersBlue],
+    //   this,
+    //   enemyHitCallback.bind(this.scene)
+    // );
   }
 
   update(time, delta) {

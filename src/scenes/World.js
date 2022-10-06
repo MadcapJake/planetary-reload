@@ -81,7 +81,7 @@ class WorldScene extends Phaser.Scene {
     // Fires laser from player on left click of mouse
     this.input.on('pointerdown', (pointer, time, lastFired) => {
       if (this.player.active === false) return;
-      const laser = this.lasers.get().setActive(true).setVisible(true);
+      const laser = this.lasers.get();
       if (laser) laser.fire(this.player, this.reticle);
     });
 
@@ -118,6 +118,17 @@ class WorldScene extends Phaser.Scene {
     
     if (this.canopies.enabled && this.canopies.delayPassed() &&
         !this.matter.overlap(this.player.body, this.canopies.bodies)) this.canopies.reset();
+
+    // laser control
+
+    this.matter.overlap(
+      [ /* targets */ 
+        ...this.soldiersBlue.getChildren(),
+        ...this.soldiersGold.getChildren(),
+        ...this.soldiersPurple.getChildren()].map(go=>go.body),
+      /* bodies */ this.lasers.getChildren().map(go=>go.body),
+      /* finish */ targetBody => targetBody.gameObject.receiveLaserHit()
+    );
   }
 
 }

@@ -20,7 +20,8 @@ class Soldier extends Phaser.GameObjects.Sprite {
     this.setCollisionCategory(CONFIG.CATEGORY.SOLDIER);
     this.setCollidesWith([
       CONFIG.CATEGORY.SOLDIER,
-      CONFIG.CATEGORY.LASER
+      CONFIG.CATEGORY.LASER,
+      CONFIG.CATEGORY.OBSTACLE
     ]);
     // let new_bod = Phaser.Physics.Matter.Matter.Bodies.rectangle(
     //   0, // x (has no impact)
@@ -129,6 +130,11 @@ class Soldier extends Phaser.GameObjects.Sprite {
   // 
   performObjective() {
 
+  }
+
+  receiveLaserHit() {
+    this.health -= 1;
+    if (this.health == 0) this.destroy();
   }
 
   smoothMoveCameraTowardsMe(smoothFactor = 0) {

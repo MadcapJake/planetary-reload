@@ -6,6 +6,7 @@ const CONFIG = {
     SOLDIER: 0b0001,
     LASER:   0b0010,
     CANOPY:  0b0100,
+    OBSTACLE: 0b1000,
   },
 }
 
