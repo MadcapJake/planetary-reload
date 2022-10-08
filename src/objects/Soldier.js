@@ -23,58 +23,34 @@ class Soldier extends Phaser.GameObjects.Sprite {
       CONFIG.CATEGORY.LASER,
       CONFIG.CATEGORY.OBSTACLE
     ]);
-    // let new_bod = Phaser.Physics.Matter.Matter.Bodies.rectangle(
-    //   0, // x (has no impact)
-    //   0, // y (has no impact)
-    //   this.width - 35,
-    //   this.height - 20,
-    //   { chamfer: { radius: 10 }}
-    // );
-    // console.log(new_bod);
-    // this.setExistingBody(new_bod);
-
+    
     this.isPlayer = false;
     
     this.team = kind;
 
     this.health = 3;
 
-    this.speed = {run: 10, walk: 7};
+    this.speed = 0.0015;
 
     // TODO: implement 10 second recharge
     this.charge = 10;
 
     this.lastFired = 0;    
-
     // TODO: update detection logic
     this.target = this.scene.player;
 
-    this.smooth = new SmoothedControls(this, 0.0005);
   }
 
-  transitionVelocity(sign, axis) {
-    let old = this.body.velocity[axis], target = sign * this.speed.walk;
-    return Phaser.Math.Linear(old, target, sign * this.smooth.value);
-  }
+
 
   update(time, delta) {
 
     // TODO: fix the jumpiness when going back and forth
     if (this.isPlayer) {
-      if (this.keyA.isDown) {
-        this.smooth.moveLeft(delta);
-        this.setVelocityX(this.transitionVelocity(-1, 'x'));
-      } else if (this.keyD.isDown) {
-        this.smooth.moveRight(delta);
-        this.setVelocityX(this.transitionVelocity( 1, 'x'));
-      }
-      if (this.keyW.isDown) {
-        this.smooth.moveUp(delta);
-        this.setVelocityY(this.transitionVelocity(-1, 'y'));
-      } else if (this.keyS.isDown) {
-        this.smooth.moveDown(delta);
-        this.setVelocityY(this.transitionVelocity( 1, 'y'));
-      } else { this.smooth.reset() }
+      if (this.keyA.isDown) this.legs.thrustLeft(this.speed)
+      else if (this.keyD.isDown) this.legs.thrustRight(this.speed);
+      if (this.keyW.isDown) this.legs.thrust(this.speed);
+      else if (this.keyS.isDown) this.legs.thrustBack(this.speed);
 
       this.smoothMoveCameraTowardsMe(0.9);
     }
@@ -87,6 +63,7 @@ class Soldier extends Phaser.GameObjects.Sprite {
 
     // rotates soldier to face towards target
     const {x: targetX, y: targetY} = this.isPlayer ? this.scene.reticle : this.target.getCenter();
+
     this.rotation = Phaser.Math.Angle.Between(this.x, this.y, targetX, targetY);
 
     // TODO: implement soldier AI movement
@@ -106,17 +83,22 @@ class Soldier extends Phaser.GameObjects.Sprite {
 
     this.body.label = 'PlayerBody';
 
-    this.setCollidesWith([
-      CONFIG.CATEGORY.SOLDIER,
-      CONFIG.CATEGORY.LASER,
-    ]);
-
     this.smoothMoveCameraTowardsMe();
 
     this.keyW = this.scene.input.keyboard.addKey('W');
     this.keyA = this.scene.input.keyboard.addKey('A');
     this.keyS = this.scene.input.keyboard.addKey('S');
     this.keyD = this.scene.input.keyboard.addKey('D');
+
+    this.legs = this.scene.matter.add.image(
+      this.x,
+      this.y,
+      '',
+      undefined,
+      {isSensor: true}
+    );
+    this.legs.setAngle(-90);
+    this.scene.matter.add.joint(this, this.legs, 0, 1);
 
     return this;
   }
@@ -151,35 +133,6 @@ function enemyFire(enemy, lasers, player, time) {
     let laser = lasers.get().setActive(true).setVisible(true);
     if (laser) laser.fire(enemy, player);
   }
-}
-
-class SmoothedControls {
-  constructor(controller, speed) {
-    this.msSpeed = speed;
-    this.value = 0;
-  }
-  moveLeft(delta) {
-    if (this.value > 0) this.reset();
-    this.value -= this.msSpeed * delta;
-    if (this.value < 1) this.value = -1;
-    // controller.time.rightDown += delta;
-  }
-  moveRight(delta) {
-    if (this.value < 0) this.reset();
-    this.value += this.msSpeed * delta;
-    if (this.value > 1) this.value = 1;
-  }
-  moveUp(delta) {
-    if (this.value > 0) this.reset();
-    this.value -= this.msSpeed * delta;
-    if (this.value < 1) this.value = -1;
-  }
-  moveDown(delta) {
-    if (this.value < 0) this.reset();
-    this.value += this.msSpeed * delta;
-    if (this.value > 1) this.value = 1;
-  }
-  reset() { this.value = 0; }
 }
 
 export class SoldierBlue extends Soldier {
