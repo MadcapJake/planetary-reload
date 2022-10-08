@@ -3868,6 +3868,38 @@
                          "type":"bool",
                          "value":true
                         }]
+                }, 
+                {
+                 "id":25,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "class":"",
+                             "height":458,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "visible":true,
+                             "width":460.833333333333,
+                             "x":144,
+                             "y":144.833333333333
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    },
+                 "properties":[
+                        {
+                         "name":"obfuscates",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }],
          "tilewidth":750
         }],

@@ -72024,7 +72024,8 @@
     CATEGORY: {
       SOLDIER: 1,
       LASER: 2,
-      CANOPY: 4
+      CANOPY: 4,
+      OBSTACLE: 8
     }
   };
   var config_default = CONFIG;
@@ -72041,11 +72042,11 @@
       this.load.spritesheet("soldier-blue.png", "assets/sprites/soldier_blue.png", { frameWidth: 66, frameHeight: 60 });
       this.load.spritesheet("soldier-gold.png", "assets/sprites/soldier_gold.png", { frameWidth: 66, frameHeight: 60 });
       this.load.spritesheet("soldier-purple.png", "assets/sprites/soldier_purple.png", { frameWidth: 66, frameHeight: 60 });
+      this.load.spritesheet("laser_bolt.png", "assets/sprites/laser_bolt.png", { frameWidth: 5, frameHeight: 9 });
       this.load.tilemapTiledJSON("main.tmj", "assets/tilemaps/main.tmj");
       this.load.image("main.png", "assets/tilesets/main.png");
       this.load.image("target.png", "assets/sprites/target.png");
       this.load.image("heart.png", "assets/sprites/heart.png");
-      this.load.image("laser_bolt.png", "assets/sprites/laser_bolt.png");
       this.load.audioSprite("gameAudio", "assets/audio/gameAudioSprite.json", [
         "assets/audio/gameAudioSprite.ogg",
         "assets/audio/gameAudioSprite.m4a",
@@ -72074,43 +72075,6 @@
 
   // src/objects/Soldier.js
   var import_phaser2 = __toModule(require_phaser());
-  var SmoothedControls = class {
-    constructor(controller, speed) {
-      this.msSpeed = speed;
-      this.value = 0;
-    }
-    moveLeft(delta) {
-      if (this.value > 0)
-        this.reset();
-      this.value -= this.msSpeed * delta;
-      if (this.value < 1)
-        this.value = -1;
-    }
-    moveRight(delta) {
-      if (this.value < 0)
-        this.reset();
-      this.value += this.msSpeed * delta;
-      if (this.value > 1)
-        this.value = 1;
-    }
-    moveUp(delta) {
-      if (this.value > 0)
-        this.reset();
-      this.value -= this.msSpeed * delta;
-      if (this.value < 1)
-        this.value = -1;
-    }
-    moveDown(delta) {
-      if (this.value < 0)
-        this.reset();
-      this.value += this.msSpeed * delta;
-      if (this.value > 1)
-        this.value = 1;
-    }
-    reset() {
-      this.value = 0;
-    }
-  };
   var Soldier = class extends import_phaser2.default.GameObjects.Sprite {
     constructor(scene, x, y, kind) {
       super(scene, x, y, `soldier-${kind}.png`);
@@ -72129,39 +72093,27 @@
       this.setCollisionCategory(config_default.CATEGORY.SOLDIER);
       this.setCollidesWith([
         config_default.CATEGORY.SOLDIER,
-        config_default.CATEGORY.LASER
+        config_default.CATEGORY.LASER,
+        config_default.CATEGORY.OBSTACLE
       ]);
       this.isPlayer = false;
       this.team = kind;
       this.health = 3;
-      this.speed = { run: 10, walk: 7 };
+      this.speed = 15e-4;
       this.charge = 10;
       this.lastFired = 0;
       this.target = this.scene.player;
-      this.smooth = new SmoothedControls(this, 5e-4);
-    }
-    transitionVelocity(sign, axis) {
-      let old = this.body.velocity[axis], target = sign * this.speed.walk;
-      return import_phaser2.default.Math.Linear(old, target, sign * this.smooth.value);
     }
     update(time, delta) {
       if (this.isPlayer) {
-        if (this.keyA.isDown) {
-          this.smooth.moveLeft(delta);
-          this.setVelocityX(this.transitionVelocity(-1, "x"));
-        } else if (this.keyD.isDown) {
-          this.smooth.moveRight(delta);
-          this.setVelocityX(this.transitionVelocity(1, "x"));
-        }
-        if (this.keyW.isDown) {
-          this.smooth.moveUp(delta);
-          this.setVelocityY(this.transitionVelocity(-1, "y"));
-        } else if (this.keyS.isDown) {
-          this.smooth.moveDown(delta);
-          this.setVelocityY(this.transitionVelocity(1, "y"));
-        } else {
-          this.smooth.reset();
-        }
+        if (this.keyA.isDown)
+          this.legs.thrustLeft(this.speed);
+        else if (this.keyD.isDown)
+          this.legs.thrustRight(this.speed);
+        if (this.keyW.isDown)
+          this.legs.thrust(this.speed);
+        else if (this.keyS.isDown)
+          this.legs.thrustBack(this.speed);
         this.smoothMoveCameraTowardsMe(0.9);
       }
       const { x: targetX, y: targetY } = this.isPlayer ? this.scene.reticle : this.target.getCenter();
@@ -72180,20 +72132,24 @@
     setPlayer() {
       this.isPlayer = true;
       this.body.label = "PlayerBody";
-      this.setCollidesWith([
-        config_default.CATEGORY.SOLDIER,
-        config_default.CATEGORY.LASER
-      ]);
       this.smoothMoveCameraTowardsMe();
       this.keyW = this.scene.input.keyboard.addKey("W");
       this.keyA = this.scene.input.keyboard.addKey("A");
       this.keyS = this.scene.input.keyboard.addKey("S");
       this.keyD = this.scene.input.keyboard.addKey("D");
+      this.legs = this.scene.matter.add.image(this.x, this.y, "", void 0, { isSensor: true });
+      this.legs.setAngle(-90);
+      this.scene.matter.add.joint(this, this.legs, 0, 1);
       return this;
     }
     performDetection() {
     }
     performObjective() {
+    }
+    receiveLaserHit() {
+      this.health -= 1;
+      if (this.health == 0)
+        this.destroy();
     }
     smoothMoveCameraTowardsMe(smoothFactor = 0) {
       let cam = this.scene.cameras.main;
@@ -72219,15 +72175,43 @@
 
   // src/objects/Laser.js
   var import_phaser3 = __toModule(require_phaser());
-  var Laser = class extends import_phaser3.default.GameObjects.Image {
+  var Laser = class extends import_phaser3.default.GameObjects.Sprite {
     constructor(scene) {
       super(scene, 0, 0, "laser_bolt.png");
-      this.speed = 1;
+      this.scene.matter.add.gameObject(this, {
+        label: "LaserBody",
+        shape: {
+          type: "rectangle",
+          width: this.width,
+          height: this.height
+        },
+        restitution: 0.5
+      });
+      this.speed = 2;
       this.born = 0;
       this.direction = 0;
       this.xSpeed = 0;
       this.ySpeed = 0;
+      this.setOrigin(0);
+      this.setDepth(1);
       this.setDisplaySize(12, 12);
+      this.setCollisionCategory(config_default.CATEGORY.LASER);
+      this.setCollidesWith([
+        config_default.CATEGORY.SOLDIER,
+        config_default.CATEGORY.OBSTACLE
+      ]);
+      this.setOnCollide(() => {
+        if (this.isBeingDestroyed)
+          return;
+        this.isBeingDestroyed = true;
+        this.setMass(Infinity);
+        this.setVelocity(0);
+        this.scene.tweens.add({
+          targets: this,
+          alpha: { value: 0, duration: 500, ease: "Expo" },
+          onComplete: () => this.destroy()
+        });
+      });
     }
     fire(shooter, target) {
       this.setPosition(shooter.x, shooter.y);
@@ -72239,11 +72223,12 @@
         this.xSpeed = -this.speed * Math.sin(this.direction);
         this.ySpeed = -this.speed * Math.cos(this.direction);
       }
-      this.x += this.xSpeed * 90;
-      this.y += this.ySpeed * 90;
+      this.x += this.xSpeed * 5;
+      this.y += this.ySpeed * 5;
       this.rotation = shooter.rotation;
       this.born = 0;
-      this.scene.physics.add.collider([this.scene.soldiersGold, this.scene.soldiersPurple, this.scene.soldiersBlue], this, enemyHitCallback.bind(this.scene));
+      this.setActive(true);
+      this.setVisible(true);
     }
     update(time, delta) {
       this.x += this.xSpeed * delta;
@@ -72255,16 +72240,6 @@
       }
     }
   };
-  function enemyHitCallback(laserHit, enemyHit) {
-    if (laserHit.active === true && enemyHit.active === true) {
-      enemyHit.health = enemyHit.health - 1;
-      if (enemyHit.isPlayer)
-        this.scene.get("HUDScene").loseHealth(enemyHit.health);
-      if (enemyHit.health <= 0)
-        enemyHit.setActive(false).setVisible(false);
-      laserHit.setActive(false).setVisible(false);
-    }
-  }
   var Laser_default = Laser;
 
   // src/managers/Canopies.js
@@ -72360,7 +72335,7 @@
       this.input.on("pointerdown", (pointer, time, lastFired) => {
         if (this.player.active === false)
           return;
-        const laser = this.lasers.get().setActive(true).setVisible(true);
+        const laser = this.lasers.get();
         if (laser)
           laser.fire(this.player, this.reticle);
       });
@@ -72382,6 +72357,11 @@
       this.matter.overlap(this.player.body, this.canopies.bodies, (_, b2) => this.canopies.enable(b2.parent.gameObject.tile));
       if (this.canopies.enabled && this.canopies.delayPassed() && !this.matter.overlap(this.player.body, this.canopies.bodies))
         this.canopies.reset();
+      this.matter.overlap([
+        ...this.soldiersBlue.getChildren(),
+        ...this.soldiersGold.getChildren(),
+        ...this.soldiersPurple.getChildren()
+      ].map((go) => go.body), this.lasers.getChildren().map((go) => go.body), (targetBody) => targetBody.gameObject.receiveLaserHit());
     }
   };
   function constrainReticle(player, reticle) {
@@ -72400,25 +72380,30 @@
 
   // src/scenes/HUD.js
   var import_phaser6 = __toModule(require_phaser());
+  var debugPosTmpl = (go) => `
+X: ${go.body.velocity.x >= 0 ? "+" : ""}${go.body.velocity.x.toFixed(8)}
+Y: ${go.body.velocity.y >= 0 ? "+" : ""}${go.body.velocity.y.toFixed(8)}
+`.trim();
   var HUDScene = class extends import_phaser6.default.Scene {
     create() {
       const { height: h, width: w } = this.scene.get("WorldScene").cameras.main;
-      const loadTextOptions = { font: "16pt Arial", color: "#FF0000", align: "center" };
-      this.loadingText = this.add.text(100, 10, "INFORMATION", loadTextOptions);
-      this.loadingText.setOrigin(1, 1).setScrollFactor(0);
+      const debugTextOptions = { font: "16pt Consolas", color: "#FF0000", align: "left" };
+      this.player = this.scene.get("WorldScene").player;
+      this.reticle = this.scene.get("WorldScene").reticle;
+      this.debugText = this.add.text(100, 10, debugPosTmpl(this.player), debugTextOptions);
+      this.debugText.setOrigin(0, 0).setScrollFactor(0);
       this.hp1 = this.add.image(w - 50, h, "heart.png").setScrollFactor(0);
       this.hp2 = this.add.image(w - 100, h, "heart.png").setScrollFactor(0);
       this.hp3 = this.add.image(w - 150, h, "heart.png").setScrollFactor(0);
       this.hp1.setOrigin(1, 1).setDisplaySize(50, 50);
       this.hp2.setOrigin(1, 1).setDisplaySize(50, 50);
       this.hp3.setOrigin(1, 1).setDisplaySize(50, 50);
-      this.player = this.scene.get("WorldScene").player;
-      this.reticle = this.scene.get("WorldScene").reticle;
       this.tabmap = this.scene.get("WorldScene").cameras.add(w / 2 - 250, h / 2 - 250, 500, 500).setName("tab-map-camera").setZoom(0.05).setBackgroundColor(8772).setVisible(false).startFollow(this.player);
       const keyTab = this.input.keyboard.addKey("tab");
       keyTab.on("down", () => this.tabmap.setVisible(!this.tabmap.visible));
     }
     update() {
+      this.debugText.setText(debugPosTmpl(this.player));
     }
     loseHealth(remainingHealth) {
       console.log(`Remaining health: ${remainingHealth}`);
